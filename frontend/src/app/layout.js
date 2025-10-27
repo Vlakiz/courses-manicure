@@ -1,5 +1,9 @@
 import { Geist, Geist_Mono, Commissioner, Ephesis } from "next/font/google";
 import "./globals.css";
+import "@/lib/fontawesome";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faFacebook, faTiktok, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,14 +44,22 @@ export default function RootLayout({ children }) {
         >
           <div className="flex justify-center text-lg py-4 font-light">
             <div className="container flex items-center justify-between">
-              <div className={`text-5xl ${ephesis.className} cursor-pointer`}>
-                Ro.Manic
+              <div className={`text-5xl ${ephesis.className} cursor-pointer select-none`}>
+                Ro<span className='text-yellow-200'>.</span>Manic
               </div>
               <ul className="hidden lg:flex text-neutral-100 uppercase space-x-8">
-                <li className="px-2 inline-flex items-center cursor-pointer">Главная</li>
-                <li className="px-2 inline-flex items-center cursor-pointer">О нас</li>
-                <li className="px-2 inline-flex items-center cursor-pointer">Услуги</li>
-                <li className="px-2 inline-flex items-center cursor-pointer">Курсы</li>
+                <li className="px-2 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                  Главная
+                </li>
+                <li className="px-2 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                  Обо мне
+                </li>
+                <li className="px-2 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                  Услуги
+                </li>
+                <li className="px-2 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                  Курсы
+                </li>
                 <li className="px-3 inline-flex items-center cursor-pointer">
                   <button className="inline-flex cursor-pointer items-center select-none text-center px-4 py-2 rounded-full overflow-hidden text-base bg-yellow-400/2.5 border border-yellow-500/50 backdrop-blur-sm shadow-[inset_0_1px_0px_rgba(242,241,187,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] hover:bg-yellow-400/30 duration-300 before:absolute before:inset-0 before:rounded-lg before:bg-linear-to-br before:from-yellow-300/60 before:via-transparent before:to-transparent before:opacity-70 before:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:bg-linear-to-tl after:from-yellow-300/30 after:via-transparent after:to-transparent after:opacity-50 after:pointer-events-none transition antialiased">
                     ЗАПИСАТЬСЯ
@@ -58,8 +70,72 @@ export default function RootLayout({ children }) {
           </div>
         </header>
         {children}
-        <footer>
-
+        <footer className="mt-10">
+          <div className="flex justify-center pb-4 mt-5 border-t border-white/40">
+            <div className={`container ${сommissioner.className}`}>
+              <div className="relative flex justify-center">
+                <div className={`text-6xl ${ephesis.className} cursor-pointer select-none absolute py-5 px-7 -bottom-12 border rounded-full border-white/40 bg-background`}>
+                  Ro<span className='text-yellow-200'>.</span>Manic
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-4 mt-20 mb-10">
+                <div className="justify-self-center">
+                  <div className="text-lg font-semibold mb-3">
+                    Соц.сети
+                  </div>
+                  <ul className="space-x-2 flex">
+                    <li className="cursor-pointer bg-white/5 p-2 rounded-full flex justify-content align-center">
+                      <FontAwesomeIcon icon={faInstagram} className="text-2xl" />
+                    </li>
+                    <li className="cursor-pointer bg-white/5 p-2 rounded-full flex justify-content align-center">
+                      <FontAwesomeIcon icon={faFacebook} className="text-2xl" />
+                    </li>
+                    <li className="cursor-pointer bg-white/5 p-2 rounded-full flex justify-content align-center">
+                      <FontAwesomeIcon icon={faTiktok} className="text-2xl" />
+                    </li>
+                    <li className="cursor-pointer bg-white/5 p-2 rounded-full flex justify-content align-center">
+                      <FontAwesomeIcon icon={faYoutube} className="text-2xl" />
+                    </li>
+                  </ul>
+                </div>
+                <div className="justify-self-center">
+                  <div className="text-lg font-semibold mb-3">
+                    Часы работы
+                  </div>
+                  <div className="mb-2">
+                    <p className="text-sm">
+                      Вторник - Суббота
+                    </p>
+                    <p className="text-sm italic">
+                      10:00 - 20:00
+                    </p>
+                  </div>
+                  <div className="mb-2">
+                    <p className="text-sm">
+                      Воскресенье - Понедельник
+                    </p>
+                    <p className="text-sm italic">
+                      выходной
+                    </p>
+                  </div>
+                </div>
+                <div className="justify-self-center">
+                  <div className="text-lg font-semibold mb-3">
+                    Контакты
+                  </div>
+                  <p className="text-sm mb-2">
+                    +48 123 456 789
+                  </p>
+                  <p className="text-sm">
+                    Gdansk, ul.Polna 15
+                  </p>
+                </div>
+              </div>
+              <div className="text-center">
+                © 2025 Ro.Manic. Студия маникюра в Гданьске.
+              </div>
+            </div>
+          </div>
         </footer>
       </body>
     </html>
