@@ -3,6 +3,7 @@ import "./globals.css";
 import "@/lib/fontawesome";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram, faFacebook, faTiktok, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 const geistSans = Geist({
@@ -19,8 +20,6 @@ const сommissioner = Commissioner({
   variable: "--font-сommissioner",
   subsets: ["cyrillic"],
 });
-
-
 
 const ephesis = Ephesis({
   variable: "--font-ephesis",
@@ -40,32 +39,43 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header
-          className={`${сommissioner.className} shadow-md fixed top-0 right-0 left-0`}
+          className={`${сommissioner.className} shadow-md fixed top-0 right-0 left-0 z-50`}
         >
           <div className="flex justify-center text-lg py-4 font-light">
-            <div className="container flex items-center justify-between">
+            <div className="container flex items-center justify-between px-5 md:px-0">
               <div className={`text-5xl ${ephesis.className} cursor-pointer select-none`}>
                 Ro<span className='text-yellow-200'>.</span>Manic
               </div>
-              <ul className="hidden lg:flex text-neutral-100 uppercase space-x-8">
-                <li className="px-2 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
-                  Главная
-                </li>
-                <li className="px-2 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
-                  Обо мне
-                </li>
-                <li className="px-2 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
-                  Услуги
-                </li>
-                <li className="px-2 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
-                  Курсы
-                </li>
-                <li className="px-3 inline-flex items-center cursor-pointer">
-                  <button className="inline-flex cursor-pointer items-center select-none text-center px-4 py-2 rounded-full overflow-hidden text-base bg-yellow-400/2.5 border border-yellow-500/50 backdrop-blur-sm shadow-[inset_0_1px_0px_rgba(242,241,187,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] hover:bg-yellow-400/30 duration-300 before:absolute before:inset-0 before:rounded-lg before:bg-linear-to-br before:from-yellow-300/60 before:via-transparent before:to-transparent before:opacity-70 before:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:bg-linear-to-tl after:from-yellow-300/30 after:via-transparent after:to-transparent after:opacity-50 after:pointer-events-none transition antialiased">
-                    ЗАПИСАТЬСЯ
-                  </button>
-                </li>
-              </ul>
+              <input id="menu" type="checkbox" className="peer hidden"/>
+              <label htmlFor="menu" className="p-2 rounded cursor-pointer inline-block peer-checked:hidden md:hidden">
+                <FontAwesomeIcon icon={faBars} className="text-2xl group-hover:text-black" />
+              </label>
+              <label htmlFor="menu" className="p-2 rounded cursor-pointer hidden peer-checked:inline-block md:peer-checked:hidden">
+                <FontAwesomeIcon icon={faXmark} className="text-2xl group-hover:text-black" />
+              </label>
+              <aside className="fixed top-0 left-0 h-full transform -translate-x-full peer-checked:translate-x-0 transition-transform md:static md:translate-x-0 border-r border-yellow-200/20 md:border-none w-90 md:w-auto ">
+                <div className="bg-background md:bg-transparent h-full position-relative">       
+                  <ul className="flex flex-col md:flex-row text-neutral-100 uppercase md:space-x-4 lg:space-x-10 space-y-10 md:space-y-0 p-10 md:p-0 h-full md:h-auto items-center md:items-stretch py-20 md:py-0">
+                    <li className="py-2 md:py-0 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                      Главная
+                    </li>
+                    <li className="py-2 md:py-0 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                      Обо мне
+                    </li>
+                    <li className="py-2 md:py-0 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                      Услуги
+                    </li>
+                    <li className="py-2 md:py-0 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                      Курсы
+                    </li>
+                    <li className="px-3 inline-flex items-center cursor-pointer mt-auto">
+                      <button className="inline-flex cursor-pointer items-center select-none text-center px-6 py-4 md:px-4 md:py-2 rounded-full overflow-hidden text-2xl md:text-base bg-yellow-400/2.5 border border-yellow-500/50 backdrop-blur-sm shadow-[inset_0_1px_0px_rgba(242,241,187,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] hover:bg-yellow-400/30 duration-300 before:absolute before:inset-0 before:rounded-lg before:bg-linear-to-br before:from-yellow-300/60 before:via-transparent before:to-transparent before:opacity-70 before:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:bg-linear-to-tl after:from-yellow-300/30 after:via-transparent after:to-transparent after:opacity-50 after:pointer-events-none transition antialiased">
+                        ЗАПИСАТЬСЯ
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </aside>
             </div>
           </div>
         </header>
@@ -74,27 +84,27 @@ export default function RootLayout({ children }) {
           <div className="flex justify-center pb-4 mt-5 border-t border-white/40">
             <div className={`container ${сommissioner.className}`}>
               <div className="relative flex justify-center">
-                <div className={`text-6xl ${ephesis.className} cursor-pointer select-none absolute py-5 px-7 -bottom-12 border rounded-full border-white/40 bg-background`}>
+                <div className={`text-6xl ${ephesis.className} select-none absolute py-5 px-7 -bottom-12 border rounded-full border-white/40 bg-background`}>
                   Ro<span className='text-yellow-200'>.</span>Manic
                 </div>
               </div>
-              <div className="grid grid-cols-3 gap-4 mt-20 mb-10">
-                <div className="justify-self-center">
-                  <div className="text-lg font-semibold mb-3">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-17 md:mt-20 mb-5 md:mb-10">
+                <div className="col-span-2 md:col-span-1 justify-self-center mb-5 md:mb-0">
+                  <div className="hidden md:block text-lg font-semibold mb-3">
                     Соц.сети
                   </div>
                   <ul className="space-x-2 flex">
-                    <li className="cursor-pointer bg-white/5 p-2 rounded-full flex justify-content align-center">
-                      <FontAwesomeIcon icon={faInstagram} className="text-2xl" />
+                    <li className="cursor-pointer bg-white/5 hover:bg-neutral-100 p-2 rounded-full flex justify-content align-center group transition duration-300">
+                      <FontAwesomeIcon icon={faInstagram} className="text-2xl group-hover:text-black" />
                     </li>
-                    <li className="cursor-pointer bg-white/5 p-2 rounded-full flex justify-content align-center">
-                      <FontAwesomeIcon icon={faFacebook} className="text-2xl" />
+                    <li className="cursor-pointer bg-white/5 hover:bg-neutral-100 p-2 rounded-full flex justify-content align-center group transition duration-300">
+                      <FontAwesomeIcon icon={faFacebook} className="text-2xl group-hover:text-black" />
                     </li>
-                    <li className="cursor-pointer bg-white/5 p-2 rounded-full flex justify-content align-center">
-                      <FontAwesomeIcon icon={faTiktok} className="text-2xl" />
+                    <li className="cursor-pointer bg-white/5 hover:bg-neutral-100 p-2 rounded-full flex justify-content align-center group transition duration-300">
+                      <FontAwesomeIcon icon={faTiktok} className="text-2xl group-hover:text-black" />
                     </li>
-                    <li className="cursor-pointer bg-white/5 p-2 rounded-full flex justify-content align-center">
-                      <FontAwesomeIcon icon={faYoutube} className="text-2xl" />
+                    <li className="cursor-pointer bg-white/5 hover:bg-neutral-100 p-2 rounded-full flex justify-content align-center group transition duration-300">
+                      <FontAwesomeIcon icon={faYoutube} className="text-2xl group-hover:text-black" />
                     </li>
                   </ul>
                 </div>
@@ -131,7 +141,7 @@ export default function RootLayout({ children }) {
                   </p>
                 </div>
               </div>
-              <div className="text-center">
+              <div className="text-center mt-10 md:mt-0">
                 © 2025 Ro.Manic. Студия маникюра в Гданьске.
               </div>
             </div>
