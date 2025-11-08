@@ -1,49 +1,35 @@
 import Image from "next/image";
 
-import mainImage from "@/../public/images/home/main.png"
+import mainImage from "@/../public/images/home/hero-1.webp";
+
+import { manrope } from "@/lib/fonts";
 
 export default function Home() {
   return (
-    <>
-      <div className="mb-8 flex justify-end w-full">
-        <Image
-          aria-hidden
-          src={mainImage}
-          alt="Main image"
-          priority
-        />
+    <div className={manrope.className}>
+      <div className="grid grid-cols-3 mb-8 w-full text-neutral-400">
+        <div className="col-span-2 mt-25">
+          <h1 className="text-8xl mb-2 text-center sm:text-left text-transparent bg-clip-text bg-linear-to-r from-yellow-300/85 from-10% via-yellow-200/90 via-20% to-yellow-300/85 to-50% bg-size-[200%_200%] bg-position-0 animate-background select-none">
+            Ro.Manic
+          </h1>
+          <h3 className="text-4xl font-light text-neutral-100 mt-3">
+            — студия маникюра и курсов в Гданьске.
+          </h3>
+          <p className="mt-10 text-xl italic">
+            Маникюр, созданный с любовью и вниманием к каждой детали.
+          </p>
+        </div>
+        <div>
+          <Image
+            aria-hidden
+            src={mainImage}
+            alt="Main image"
+            width={600}
+            className="rounded-xl shadow-lg"
+            priority
+          />
+        </div>
       </div>
-      <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-        <li className="mb-2 tracking-[-.01em]">
-          Get started by editing{" "}
-          <code className="bg-black/5 dark:bg-white/6 font-mono font-semibold px-1 py-0.5 rounded">
-            src/app/page.js
-          </code>
-          .
-        </li>
-        <li className="tracking-[-.01em]">
-          Save and see your changes instantly.
-        </li>
-      </ol>
-
-      <div className="flex gap-4 items-center flex-col sm:flex-row">
-        <a
-          className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Deploy now
-        </a>
-        <a
-          className="rounded-full border border-solid border-black/8 dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Read our docs
-        </a>
-      </div>
-    </>
+    </div>
   );
 }

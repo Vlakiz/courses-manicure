@@ -1,15 +1,19 @@
-import { сommissioner, ephesis } from "@/lib/fonts";
+import clsx from 'clsx';
+
+import { commissioner, ephesis } from "@/lib/fonts";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faFacebook, faTiktok, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
+    const liSocialClass = "cursor-pointer bg-white/5 hover:bg-neutral-100 p-2 rounded-full flex justify-content align-center group transition duration-300";
+
     return (
         <footer className="mt-10">
           <div className="flex justify-center pb-4 mt-5 border-t border-white/40">
-            <div className={`container ${сommissioner.className}`}>
+            <div className={clsx('container', commissioner.className)}>
               <div className="relative flex justify-center">
-                <div className={`text-6xl ${ephesis.className} select-none absolute py-5 px-7 -bottom-12 border rounded-full border-white/40 bg-background`}>
+                <div className={clsx('text-6xl select-none absolute py-5 px-7 -bottom-12 border rounded-full border-white/40 bg-background', ephesis.className)}>
                   Ro<span className='text-yellow-200'>.</span>Manic
                 </div>
               </div>
@@ -19,16 +23,16 @@ export default function Footer() {
                     Соц.сети
                   </div>
                   <ul className="space-x-2 flex">
-                    <li className="cursor-pointer bg-white/5 hover:bg-neutral-100 p-2 rounded-full flex justify-content align-center group transition duration-300">
+                    <li className={liSocialClass}>
                       <FontAwesomeIcon icon={faInstagram} className="text-2xl group-hover:text-black" />
                     </li>
-                    <li className="cursor-pointer bg-white/5 hover:bg-neutral-100 p-2 rounded-full flex justify-content align-center group transition duration-300">
+                    <li className={liSocialClass}>
                       <FontAwesomeIcon icon={faFacebook} className="text-2xl group-hover:text-black" />
                     </li>
-                    <li className="cursor-pointer bg-white/5 hover:bg-neutral-100 p-2 rounded-full flex justify-content align-center group transition duration-300">
+                    <li className={liSocialClass}>
                       <FontAwesomeIcon icon={faTiktok} className="text-2xl group-hover:text-black" />
                     </li>
-                    <li className="cursor-pointer bg-white/5 hover:bg-neutral-100 p-2 rounded-full flex justify-content align-center group transition duration-300">
+                    <li className={liSocialClass}>
                       <FontAwesomeIcon icon={faYoutube} className="text-2xl group-hover:text-black" />
                     </li>
                   </ul>

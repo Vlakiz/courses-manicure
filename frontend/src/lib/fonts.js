@@ -1,6 +1,6 @@
-import { Commissioner, Ephesis } from "next/font/google";
+import { Commissioner, Ephesis, Manrope } from "next/font/google";
 
-const сommissioner = Commissioner({
+const commissioner = Commissioner({
   variable: "--font-сommissioner",
   subsets: ["cyrillic"],
 });
@@ -11,4 +11,9 @@ const ephesis = Ephesis({
   weight: "400",
 });
 
-export { сommissioner, ephesis };
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["cyrillic"],
+});
+
+export { commissioner, ephesis, manrope };
