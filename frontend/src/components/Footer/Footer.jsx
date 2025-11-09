@@ -9,7 +9,7 @@ export default function Footer() {
     const liSocialClass = "cursor-pointer bg-white/5 hover:bg-neutral-100 p-2 rounded-full flex justify-content align-center group transition duration-300";
 
     return (
-        <footer className="mt-25">
+        <footer className="mt-25 pb-5">
           <div className="flex justify-center pb-4 mt-5 border-t border-white/40">
             <div className={clsx('container', commissioner.className)}>
               <div className="relative flex justify-center">
