@@ -14,8 +14,8 @@ export default function RootLayout({ children }) {
     <html lang="ru">
       <body className='antialiased'>
         <Header />
-        <div className="flex flex-row justify-center mt-25">
-          <main className="container min-h-screen">
+        <div className="mt-25">
+          <main className="min-h-screen">
             {children}
           </main>
         </div>
