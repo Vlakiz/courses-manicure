@@ -1,8 +1,8 @@
 import "./globals.css";
 import "@/lib/fontawesome";
 
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
+import Header from "@/components/layout/Header/Header";
+import Footer from "@/components/layout/Footer/Footer";
 
 export const metadata = {
   title: "Ro.Manic | Маникюр твоей мечты",
