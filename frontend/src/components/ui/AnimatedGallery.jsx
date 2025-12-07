@@ -2,7 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretLeft, faCaretRight} from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 
 export default function ImageSlider({
     images = [],
@@ -54,14 +54,14 @@ export default function ImageSlider({
             onClick={prev}
             className="absolute left-4 top-1/2 -translate-y-1/2 cursor-pointer"
         >
-            <FontAwesomeIcon icon={faCaretLeft} className="text-4xl text-white opacity-50 hover:opacity-80" />
+            <FontAwesomeIcon icon={faChevronLeft} className="text-4xl text-white opacity-50 hover:opacity-80" />
         </button>
 
         <button
             onClick={next}
             className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer "
         >
-            <FontAwesomeIcon icon={faCaretRight} className="text-4xl text-white opacity-50 hover:opacity-80"/>
+            <FontAwesomeIcon icon={faChevronRight} className="text-4xl text-white opacity-50 hover:opacity-80"/>
         </button>
     </div>
   );
