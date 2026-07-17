@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "title": "Ro.Manic | Manicure Twoich marzeń",
+    "description": "Studio manicure i kursów manicure w Gdańsku."
+  },
+  "nav": {
+    "about": "O mnie",
+    "services": "Usługi",
+    "prices": "Cennik",
+    "courses": "Kursy",
+    "book": "Zapisz się"
+  },
+  "home": {
+    "hero": {
+      "subtitle": "— studio manicure i kursów w <city>Gdańsku</city>.",
+      "tagline": "Manicure stworzony z miłością i dbałością o każdy szczegół."
+    },
+    "about": {
+      "heading": "Poznajmy się",
+      "paragraph1": "Nazywam się <name>Żenia</name>, jestem stylistką paznokci i wykładowczynią.",
+      "paragraph2": "Wierzę, że manicure to nie tylko pielęgnacja, ale sposób na to, by codziennie czuć się pewnie, zadbanie i pięknie.",
+      "paragraph3": "W moim studio tworzę przytulność, spokój i atmosferę, w której każda kobieta może się zrelaksować i poczuć opiekę.",
+      "link": "Dowiedz się więcej o mnie tutaj →"
+    },
+    "gallery": {
+      "headingMain": "Najlepiej powiedzą o mnie",
+      "headingHighlight": "moje prace"
+    },
+    "reviews": {
+      "headingPrefix": "... a także",
+      "headingHighlight": "opinie",
+      "headingSuffix": "moich zadowolonych klientek",
+      "prev": "Poprzednia opinia",
+      "next": "Następna opinia"
+    }
+  },
+  "footer": {
+    "social": "Media społecznościowe",
+    "hours": "Godziny pracy",
+    "workDays": "Wtorek - Sobota",
+    "workHours": "10:00 - 20:00",
+    "restDays": "Niedziela - Poniedziałek",
+    "dayOff": "nieczynne",
+    "contacts": "Kontakt",
+    "phone": "+48 123 456 789",
+    "address": "Gdansk, ul.Polna 15",
+    "copyright": "© 2025 Ro.Manic. Studio manicure w Gdańsku."
+  }
+}

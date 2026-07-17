@@ -1,8 +1,14 @@
+import { useTranslations } from "next-intl";
+
 import { commissioner, ephesis } from "@/lib/fonts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+
 export default function Header() {
+    const t = useTranslations("nav");
+
     const liClass = "py-2 md:py-0 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute " +
                     "after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300";
 
@@ -26,21 +32,24 @@ export default function Header() {
                         <div className="bg-background md:bg-transparent h-full position-relative">       
                             <ul className="flex flex-col md:flex-row text-neutral-100 uppercase md:space-x-4 lg:space-x-10 space-y-10 md:space-y-0 p-10 md:p-0 h-full md:h-auto items-center md:items-stretch py-20 md:py-0">
                                 <li className={liClass}>
-                                    Обо мне
+                                    {t("about")}
                                 </li>
                                 <li className={liClass}>
-                                    Услуги
+                                    {t("services")}
                                 </li>
                                 <li className={liClass}>
-                                    Цены
+                                    {t("prices")}
                                 </li>
                                 <li className={liClass}>
-                                    Курсы
+                                    {t("courses")}
                                 </li>
                                 <li className="px-3 inline-flex items-center cursor-pointer mt-auto">
                                     <button className="btn-schedule">
-                                        ЗАПИСАТЬСЯ
+                                        {t("book").toUpperCase()}
                                     </button>
+                                </li>
+                                <li className="px-3 inline-flex items-center mt-auto">
+                                    <LanguageSwitcher />
                                 </li>
                             </ul>
                         </div>

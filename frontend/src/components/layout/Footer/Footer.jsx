@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { useTranslations } from "next-intl";
 
 import { commissioner, ephesis } from "@/lib/fonts";
 
@@ -6,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faFacebook, faTiktok, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
+    const t = useTranslations("footer");
+
     const liSocialClass = "cursor-pointer bg-white/5 hover:bg-neutral-100 p-2 rounded-full flex justify-content align-center group transition duration-300";
 
     return (
@@ -20,7 +23,7 @@ export default function Footer() {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-17 md:mt-20 mb-5 md:mb-10">
                 <div className="col-span-2 md:col-span-1 justify-self-center mb-5 md:mb-0">
                   <div className="hidden md:block text-lg font-semibold mb-3">
-                    Соц.сети
+                    {t("social")}
                   </div>
                   <ul className="space-x-2 flex">
                     <li className={liSocialClass}>
@@ -39,39 +42,39 @@ export default function Footer() {
                 </div>
                 <div className="justify-self-center">
                   <div className="text-lg font-semibold mb-3">
-                    Часы работы
+                    {t("hours")}
                   </div>
                   <div className="mb-2">
                     <p className="text-sm">
-                      Вторник - Суббота
+                      {t("workDays")}
                     </p>
                     <p className="text-sm italic">
-                      10:00 - 20:00
+                      {t("workHours")}
                     </p>
                   </div>
                   <div className="mb-2">
                     <p className="text-sm">
-                      Воскресенье - Понедельник
+                      {t("restDays")}
                     </p>
                     <p className="text-sm italic">
-                      выходной
+                      {t("dayOff")}
                     </p>
                   </div>
                 </div>
                 <div className="justify-self-center">
                   <div className="text-lg font-semibold mb-3">
-                    Контакты
+                    {t("contacts")}
                   </div>
                   <p className="text-sm mb-2">
-                    +48 123 456 789
+                    {t("phone")}
                   </p>
                   <p className="text-sm">
-                    Gdansk, ul.Polna 15
+                    {t("address")}
                   </p>
                 </div>
               </div>
               <div className="text-center mt-10 md:mt-0">
-                © 2025 Ro.Manic. Студия маникюра в Гданьске.
+                {t("copyright")}
               </div>
             </div>
           </div>

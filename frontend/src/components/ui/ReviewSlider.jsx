@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -13,6 +14,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 export default function ReviewSlider({ reviews }) {
+  const t = useTranslations('home.reviews');
   const swiperRef = useRef(null);
 
   const renderStars = (rating) => {
@@ -100,14 +102,14 @@ export default function ReviewSlider({ reviews }) {
         <button 
           onClick={() => swiperRef.current?.slidePrev()}
           className="w-12 h-12 flex items-center justify-center rounded-full  border-gray-200 text-yellow-200 hover:bg-yellow-500/10 hover:text-yellow-200 hover:border-yellow-200 transition-colors shadow-sm cursor-pointer"
-          aria-label="Предыдущий отзыв"
+          aria-label={t('prev')}
         >
           <FontAwesomeIcon icon={faChevronLeft} size={20} />
         </button>
-        <button 
+        <button
           onClick={() => swiperRef.current?.slideNext()}
           className="w-12 h-12 flex items-center justify-center rounded-full  border-gray-200 text-yellow-200 hover:bg-yellow-500/10 hover:text-yellow-200 hover:border-yellow-200 transition-colors shadow-sm cursor-pointer"
-          aria-label="Следующий отзыв"
+          aria-label={t('next')}
         >
           <FontAwesomeIcon icon={faChevronRight} size={20} />
         </button>

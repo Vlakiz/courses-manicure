@@ -1,6 +1,9 @@
 import clsx from "clsx";
 
 import Image from "next/image";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+
+import { Link } from "@/i18n/navigation";
 
 import heroImage from "@/../public/images/home/hero.webp";
 import aboutImage from "@/../public/images/home/about.webp";
@@ -13,7 +16,12 @@ import Marquee from "@/components/ui/Marquee";
 import { manrope } from "@/lib/fonts";
 import { reviews } from '@/data/reviews';
 
-export default function Home() {
+export default async function Home({ params }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations("home");
+
   return (
     <div className={clsx(manrope.className)}>
       <div className="flex justify-center">
@@ -23,10 +31,12 @@ export default function Home() {
               RO.manic
             </h1>
             <h3 className="text-4xl font-light text-zinc-50/90 text-shadow-2xs mt-3">
-              — студия маникюра и курсов в <span className="text-yellow-100">Гданьске</span>.
+              {t.rich("hero.subtitle", {
+                city: (chunks) => <span className="text-yellow-100">{chunks}</span>,
+              })}
             </h3>
             <p className="mt-10 text-xl italic text-neutral-400 ">
-              Маникюр, созданный с любовью и вниманием к каждой детали.
+              {t("hero.tagline")}
             </p>
           </div>
           <div className="relative">
@@ -59,24 +69,26 @@ export default function Home() {
             </div>
             <div className="col-span-2 flex flex-col pl-3 mt-10 xl:mt-25 order-0 lg:order-1">
               <h2 className="text-6xl font-light pl-10 border-l-4 border-yellow-200 text-neutral-100/90 select-none">
-                Давай знакомиться
+                {t("about.heading")}
               </h2>
               <div className="text-neutral-300/90">
                 <p className="mt-10 lg:mt-15 text-xl leading-8 space-y-4 max-w-2xl">
-                  Меня зовут <span className="text-yellow-100">Женя</span>, я мастер маникюра и преподаватель.
+                  {t.rich("about.paragraph1", {
+                    name: (chunks) => <span className="text-yellow-100">{chunks}</span>,
+                  })}
                 </p>
                 <p className="mt-5 lg:mt-10 text-xl leading-8 space-y-4 max-w-2xl">
-                  Я верю, что маникюр — это не просто уход, а способ почувствовать себя уверенно, ухоженно и красиво каждый день.
+                  {t("about.paragraph2")}
                 </p>
                 <p className="mt-5 lg:mt-10 text-xl leading-8 space-y-4 max-w-2xl">
-                  В моей студии я создаю уют, спокойствие и атмосферу, где каждая девушка может расслабиться и почувствовать заботу.
+                  {t("about.paragraph3")}
                 </p>
               </div>
               <div>
                 <p className="mt-7 lg:mt-15 text-xl leading-8 space-y-4 max-w-2xl">
-                  <a className="text-yellow-100 hover:underline underline-offset-6 opacity-80 hover:opacity-100" href="/about">
-                    Больше обо мне узнаешь здесь &rarr;
-                  </a>
+                  <Link className="text-yellow-100 hover:underline underline-offset-6 opacity-80 hover:opacity-100" href="/about">
+                    {t("about.link")}
+                  </Link>
                 </p>
               </div>
             </div>
@@ -87,9 +99,9 @@ export default function Home() {
         <div className="flex justify-center pb-5">
           <div className="container">
             <h2 className="text-5xl mt-15 text-neutral-100/90 select-none inline-block px-5 leading-tight">
-              Лучше всего за меня скажут
+              {t("gallery.headingMain")}
               <br className="md:hidden"/>
-              <span className="text-yellow-100 mt-2"> мои работы</span>
+              <span className="text-yellow-100 mt-2"> {t("gallery.headingHighlight")}</span>
             </h2>
             <div className="mt-4 md:mt-10 grid md:grid-cols-2">
               <div className="lg:pt-10 lg:pl-10 hidden md:block">
@@ -119,7 +131,7 @@ export default function Home() {
           <div className="container">
             <div className="text-center">
               <h2 className="text-5xl text-neutral-100/90 select-none inline-block leading-tight">
-                ... и <span className="text-yellow-100 mt-2">отзывы</span> моих довольных клиенток
+                {t("reviews.headingPrefix")} <span className="text-yellow-100 mt-2">{t("reviews.headingHighlight")}</span> {t("reviews.headingSuffix")}
               </h2>
             </div>
             <div className="mt-4 md:mt-10 flex justify-center overflow-hidden md:mask-[linear-gradient(to_right,transparent_0%,background_10%,background_90%,transparent_100%)]">

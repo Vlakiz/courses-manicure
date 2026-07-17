@@ -14,9 +14,10 @@ services:
       - db
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      target: dev
     container_name: courses_frontend
-    command: sleep infinity
     ports:
       - "3001:3000"
     volumes:
