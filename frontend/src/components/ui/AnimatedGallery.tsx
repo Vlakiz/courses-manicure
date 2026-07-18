@@ -4,13 +4,19 @@ import { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 
+type Props = {
+    images?: string[];
+    autoplay?: boolean;
+    interval?: number;
+};
+
 export default function ImageSlider({
     images = [],
     autoplay = true,
     interval = 3000,
-}) {
+}: Props) {
     const [index, setIndex] = useState(0);
-    const timeoutRef = useRef(null);
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const next = () => {
         setIndex((prev) => (prev + 1) % images.length);
@@ -22,19 +28,24 @@ export default function ImageSlider({
 
     const resetAutoplay = () => {
         if (!autoplay) return;
-        clearTimeout(timeoutRef.current);
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(next, interval);
     };
 
     useEffect(() => {
         resetAutoplay();
-        return () => clearTimeout(timeoutRef.current);
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [index, autoplay]);
 
     return (
         <div
             className="relative w-full overflow-hidden"
-            onMouseEnter={() => clearTimeout(timeoutRef.current)}
+            onMouseEnter={() => {
+                if (timeoutRef.current) clearTimeout(timeoutRef.current);
+            }}
             onMouseLeave={resetAutoplay}
         >
         <div

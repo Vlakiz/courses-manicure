@@ -1,29 +1,36 @@
 'use client';
 
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperInstance } from 'swiper';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight, faQuoteRight, faStar, faUser } from "@fortawesome/free-solid-svg-icons";
+
+import type { Review } from '@/data/reviews';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-export default function ReviewSlider({ reviews }) {
-  const t = useTranslations('home.reviews');
-  const swiperRef = useRef(null);
+type Props = {
+  reviews: Review[];
+};
 
-  const renderStars = (rating) => {
+export default function ReviewSlider({ reviews }: Props) {
+  const t = useTranslations('home.reviews');
+  const swiperRef = useRef<SwiperInstance | null>(null);
+
+  const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
       <FontAwesomeIcon
         icon={faStar}
-        key={index} 
-        size={14}
-        className={index < rating ? "text-yellow-200" : "text-gray-300"} 
+        key={index}
+        size="1x"
+        className={index < rating ? "text-yellow-200" : "text-gray-300"}
       />
     ));
   };
@@ -40,7 +47,7 @@ export default function ReviewSlider({ reviews }) {
         speed={600}
         autoplay={{
           delay: 5000,
-          disableOnInteraction: false 
+          disableOnInteraction: false
         }}
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
@@ -69,15 +76,15 @@ export default function ReviewSlider({ reviews }) {
               in-[.swiper-slide-active]:scale-110
               in-[.swiper-slide-active]:opacity-100
               in-[.swiper-slide-active]:grayscale-0
-              
+
               bg-zinc-900 rounded-2xl p-8 shadow-xl border border-gray-100/30 min-h-100 flex flex-col items-center text-center
             ">
               <div className="relative mb-6">
                 <div className="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center border-4 border-white shadow-sm">
-                  <FontAwesomeIcon icon={faUser} size={35} className="text-2xl text-black text-pink-300 opacity-50 hover:opacity-80" />
+                  <FontAwesomeIcon icon={faUser} size="2x" className="text-2xl text-black text-pink-300 opacity-50 hover:opacity-80" />
                 </div>
                 <div className="absolute -bottom-2 -right-2 bg-yellow-200 text-white rounded-full p-2 flex items-center justify-center">
-                  <FontAwesomeIcon icon={faQuoteRight} size={12} className="text-2xl text-black opacity-50 hover:opacity-80" />
+                  <FontAwesomeIcon icon={faQuoteRight} size="1x" className="text-2xl text-black opacity-50 hover:opacity-80" />
                 </div>
               </div>
 
@@ -86,7 +93,7 @@ export default function ReviewSlider({ reviews }) {
               </div>
 
               <blockquote className="text-gray-300 mb-6 grow text-lg">
-                "{review.text}"
+                &quot;{review.text}&quot;
               </blockquote>
 
               <figcaption>
@@ -99,22 +106,22 @@ export default function ReviewSlider({ reviews }) {
       </Swiper>
 
       <div className="flex justify-center gap-4 mt-8">
-        <button 
+        <button
           onClick={() => swiperRef.current?.slidePrev()}
           className="w-12 h-12 flex items-center justify-center rounded-full  border-gray-200 text-yellow-200 hover:bg-yellow-500/10 hover:text-yellow-200 hover:border-yellow-200 transition-colors shadow-sm cursor-pointer"
           aria-label={t('prev')}
         >
-          <FontAwesomeIcon icon={faChevronLeft} size={20} />
+          <FontAwesomeIcon icon={faChevronLeft} size="lg" />
         </button>
         <button
           onClick={() => swiperRef.current?.slideNext()}
           className="w-12 h-12 flex items-center justify-center rounded-full  border-gray-200 text-yellow-200 hover:bg-yellow-500/10 hover:text-yellow-200 hover:border-yellow-200 transition-colors shadow-sm cursor-pointer"
           aria-label={t('next')}
         >
-          <FontAwesomeIcon icon={faChevronRight} size={20} />
+          <FontAwesomeIcon icon={faChevronRight} size="lg" />
         </button>
       </div>
 
     </div>
   );
-};
+}

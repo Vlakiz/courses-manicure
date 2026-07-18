@@ -3,9 +3,9 @@
 import { useLocale } from "next-intl";
 
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
+import { routing, type Locale } from "@/i18n/routing";
 
-const labels = {
+const labels: Record<Locale, string> = {
     pl: "PL",
     ua: "UA",
     ru: "RU",

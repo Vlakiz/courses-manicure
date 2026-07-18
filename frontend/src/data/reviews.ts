@@ -1,4 +1,12 @@
-const reviews = [
+export interface Review {
+  id: number;
+  name: string;
+  text: string;
+  rating: number;
+  role?: string;
+}
+
+const reviews: Review[] = [
   {
     id: 1,
     name: 'Katarzyna T',

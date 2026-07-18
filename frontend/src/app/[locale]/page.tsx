@@ -1,9 +1,13 @@
+import type { ReactNode } from "react";
 import clsx from "clsx";
 
 import Image from "next/image";
+import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { Link } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
 
 import heroImage from "@/../public/images/home/hero.webp";
 import aboutImage from "@/../public/images/home/about.webp";
@@ -16,8 +20,17 @@ import Marquee from "@/components/ui/Marquee";
 import { manrope } from "@/lib/fonts";
 import { reviews } from '@/data/reviews';
 
-export default async function Home({ params }) {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function Home({ params }: Props) {
   const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
   setRequestLocale(locale);
 
   const t = await getTranslations("home");
@@ -32,7 +45,7 @@ export default async function Home({ params }) {
             </h1>
             <h3 className="text-4xl font-light text-zinc-50/90 text-shadow-2xs mt-3">
               {t.rich("hero.subtitle", {
-                city: (chunks) => <span className="text-yellow-100">{chunks}</span>,
+                city: (chunks: ReactNode) => <span className="text-yellow-100">{chunks}</span>,
               })}
             </h3>
             <p className="mt-10 text-xl italic text-neutral-400 ">
@@ -74,7 +87,7 @@ export default async function Home({ params }) {
               <div className="text-neutral-300/90">
                 <p className="mt-10 lg:mt-15 text-xl leading-8 space-y-4 max-w-2xl">
                   {t.rich("about.paragraph1", {
-                    name: (chunks) => <span className="text-yellow-100">{chunks}</span>,
+                    name: (chunks: ReactNode) => <span className="text-yellow-100">{chunks}</span>,
                   })}
                 </p>
                 <p className="mt-5 lg:mt-10 text-xl leading-8 space-y-4 max-w-2xl">
