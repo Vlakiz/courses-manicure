@@ -5,8 +5,7 @@
   },
   "nav": {
     "about": "Про мене",
-    "services": "Послуги",
-    "prices": "Ціни",
+    "prices": "Ціни та послуги",
     "courses": "Курси",
     "book": "Записатися"
   },
@@ -45,5 +44,45 @@
     "phone": "+48 123 456 789",
     "address": "Gdansk, ul.Polna 15",
     "copyright": "© 2025 Ro.Manic. Студія манікюру в Гданську."
+  },
+  "prices": {
+    "seo": {
+      "title": "Ro.Manic | Послуги та ціни",
+      "description": "Актуальні ціни на манікюр, педикюр та догляд у студії Ro.Manic у Гданську."
+    },
+    "headingMain": "Послуги та",
+    "headingHighlight": "ціни",
+    "note": "Точна вартість залежить від довжини та форми нігтів і уточнюється під час консультації.",
+    "cta": "Записатися",
+    "categories": [
+      {
+        "title": "Манікюр",
+        "items": [
+          { "id": "manicure-classic", "name": "Класичний манікюр", "price": "100 zł" },
+          { "id": "manicure-hybrid", "name": "Манікюр гель-лак (гібрид)", "price": "170 zł" },
+          { "id": "manicure-removal", "name": "Зняття покриття", "price": "50 zł" },
+          { "id": "manicure-fill", "name": "Корекція гель / акригель", "price": "200 zł" },
+          { "id": "manicure-extension-s", "name": "Нарощування нігтів S", "price": "230 zł" },
+          { "id": "manicure-extension-m", "name": "Нарощування нігтів M", "price": "250 zł" }
+        ]
+      },
+      {
+        "title": "Педикюр",
+        "items": [
+          { "id": "pedicure-classic", "name": "Класичний педикюр", "price": "150 zł" },
+          { "id": "pedicure-hybrid", "name": "Педикюр гель-лак", "price": "200 zł" },
+          { "id": "pedicure-toes", "name": "Педикюр – тільки пальці", "price": "170 zł" }
+        ]
+      },
+      {
+        "title": "Комплекти",
+        "items": [
+          { "id": "set-gel-pedicure", "name": "Гель + педикюр", "price": "380 zł" },
+          { "id": "set-hybrid-pedicure", "name": "Гель-лак + педикюр", "price": "350 zł" },
+          { "id": "set-removal-manicure", "name": "Зняття гелю + класичний манікюр", "price": "120 zł" },
+          { "id": "set-classic-hands-feet", "name": "Класика руки + ноги", "price": "220 zł" }
+        ]
+      }
+    ]
   }
 }

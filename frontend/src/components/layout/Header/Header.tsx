@@ -4,6 +4,7 @@ import { commissioner, ephesis } from "@/lib/fonts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
+import { Link } from "@/i18n/navigation";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 export default function Header() {
@@ -18,9 +19,11 @@ export default function Header() {
         >
             <div className="flex justify-center text-lg py-4 font-light">
                 <div className="container flex items-center justify-between px-5 md:px-0">
-                    <div className={`text-5xl ${ephesis.className} cursor-pointer select-none`}>
-                        Ro<span className='text-yellow-200'>.</span>Manic
-                    </div>
+                    <Link href="/">
+                        <div className={`text-5xl ${ephesis.className} cursor-pointer select-none`}>
+                            Ro<span className='text-yellow-200'>.</span>Manic
+                        </div>
+                    </Link>
                     <input id="menu" type="checkbox" className="peer hidden"/>
                     <label htmlFor="menu" className="p-2 rounded cursor-pointer inline-block peer-checked:hidden md:hidden">
                         <FontAwesomeIcon icon={faBars} className="text-2xl group-hover:text-black" />
@@ -35,10 +38,7 @@ export default function Header() {
                                     {t("about")}
                                 </li>
                                 <li className={liClass}>
-                                    {t("services")}
-                                </li>
-                                <li className={liClass}>
-                                    {t("prices")}
+                                    <Link href="/prices">{t("prices")}</Link>
                                 </li>
                                 <li className={liClass}>
                                     {t("courses")}
