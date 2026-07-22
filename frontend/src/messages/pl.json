@@ -82,6 +82,17 @@
           { "id": "set-removal-manicure", "name": "Ściągnięcie stylizacji żelowej + manicure classic", "price": "120 zł", "duration": "60 min", "description": "Zdjęcie starej stylizacji i manicure klasyczny w jednej wizycie." },
           { "id": "set-classic-hands-feet", "name": "Classic ręce + nogi", "price": "220 zł", "duration": "100 min", "description": "Lubisz naturalny wygląd paznokci? Ale chcesz, żeby wyglądały na zadbane?\nZapraszam na opracowanie dłoni i stóp – w pakiecie taniej!" }
         ]
+      },
+      {
+        "title": "Dodatkowe usługi",
+        "items": [
+          { "id": "french", "name": "French", "price": "20 zł", "duration": "+10 min", "description": "Klasyczny biały uśmiech paznokcia – elegancki dodatek do każdej stylizacji." },
+          { "id": "small-decoration", "name": "Zdobienie małe", "price": "10 zł", "duration": "+5 min", "description": "Subtelny akcent na 2 paznokciach." },
+          { "id": "medium-decoration", "name": "Zdobienie średnie", "price": "30 zł", "duration": "+15 min", "description": "Ręcznie malowane wzory na 2 i więcej paznokciach lub bardziej rozbudowane zdobienie na 2 paznokciach." },
+          { "id": "large-decoration", "name": "Zdobienie duże", "price": "40 zł", "duration": "+25 min", "description": "Metalowe zdobienia, french na całej płytce i cyrkonie na wszystkich paznokciach – stylizacja, która przyciąga wzrok." },
+          { "id": "nail-extension", "name": "Przedłużanie 1 paznokcia", "price": "20 zł", "duration": "+10 min", "description": "Przedłużenie lub naprawa pojedynczego paznokcia poza pełnym manicure." },
+          { "id": "mirror-effect", "name": "Efekt lustra / Pyłek", "price": "20 zł", "duration": "+10 min", "description": "Perłowy pyłek wcierany w płytkę paznokcia dla efektu lustrzanego połysku." }
+        ]
       }
     ]
   }

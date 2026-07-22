@@ -15,4 +15,10 @@ export const servicePhotos: Record<string, string[]> = {
   "set-hybrid-pedicure": ["/images/prices/25.webp", "/images/prices/26.webp"],
   "set-removal-manicure": ["/images/prices/27.webp"],
   "set-classic-hands-feet": ["/images/prices/28.webp"],
+  "french": ["/images/prices/29.webp"],
+  "small-decoration": ["/images/prices/30.webp"],
+  "medium-decoration": ["/images/prices/31.webp"],
+  "large-decoration": ["/images/prices/32.webp"],
+  "nail-extension": ["/images/prices/33.webp"],
+  "mirror-effect": ["/images/prices/34.webp"],
 };
