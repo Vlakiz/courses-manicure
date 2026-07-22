@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faChevronRight, faClock, faImages, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import FadeInSection from "@/components/ui/FadeInSection";
 
@@ -11,6 +11,9 @@ export type PriceItem = {
   id: string;
   name: string;
   price: string;
+  duration?: string;
+  description?: string;
+  features?: string[];
   photos: string[];
 };
 
@@ -27,8 +30,6 @@ type LightboxState = {
   photos: string[];
   index: number;
 };
-
-const MAX_THUMBS = 4;
 
 export default function PriceList({ categories }: Props) {
   const [lightbox, setLightbox] = useState<LightboxState | null>(null);
@@ -60,56 +61,82 @@ export default function PriceList({ categories }: Props) {
 
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="space-y-14">
         {categories.map((category) => (
           <FadeInSection key={category.title}>
-            <div className="bg-neutral-900/50 rounded-3xl p-8 h-full">
-              <h2 className="text-2xl text-yellow-100 pb-4 mb-4 border-b border-yellow-200/20 select-none">
+            <section>
+              <h2 className="text-3xl md:text-4xl text-yellow-100 mb-6 select-none">
                 {category.title}
               </h2>
-              <ul className="space-y-5">
+              <ul className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 {category.items.map((item) => {
-                  const visiblePhotos = item.photos.slice(0, MAX_THUMBS);
-                  const remaining = item.photos.length - MAX_THUMBS;
+                  const hasPhotos = item.photos.length > 0;
 
                   return (
-                    <li key={item.id} className="text-neutral-200/90">
-                      <div className="flex items-baseline justify-between gap-4">
-                        <span>{item.name}</span>
-                        <span className="flex-1 border-b border-dotted border-neutral-600/60 translate-y-[-4px]" />
-                        <span className="text-yellow-100 whitespace-nowrap">{item.price}</span>
+                    <li
+                      key={item.id}
+                      className="group bg-neutral-900/50 rounded-2xl p-5 sm:p-6 hover:bg-neutral-900/70 transition-colors duration-300"
+                    >
+                      <div className="flex items-start gap-4">
+                        {hasPhotos && (
+                          <button
+                            type="button"
+                            onClick={() => setLightbox({ photos: item.photos, index: 0 })}
+                            className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl overflow-hidden ring-1 ring-yellow-200/20 hover:ring-yellow-200/70 transition cursor-zoom-in"
+                            aria-label={item.name}
+                          >
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={item.photos[0]}
+                              alt=""
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                            {item.photos.length > 1 && (
+                              <span className="absolute bottom-1 right-1 flex items-center gap-1 bg-black/60 backdrop-blur-sm text-white text-[10px] px-1.5 py-0.5 rounded-full">
+                                <FontAwesomeIcon icon={faImages} className="text-[9px]" />
+                                {item.photos.length}
+                              </span>
+                            )}
+                          </button>
+                        )}
+
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-start justify-between gap-3">
+                            <h3 className="text-lg text-neutral-100 leading-snug">{item.name}</h3>
+                            <span className="text-yellow-100 whitespace-nowrap shrink-0">
+                              {item.price}
+                            </span>
+                          </div>
+                          {item.duration && (
+                            <div className="flex items-center gap-1.5 text-xs text-neutral-500 mt-1">
+                              <FontAwesomeIcon icon={faClock} className="text-[11px]" />
+                              <span>{item.duration}</span>
+                            </div>
+                          )}
+                        </div>
                       </div>
 
-                      {visiblePhotos.length > 0 && (
-                        <div className="flex gap-2 mt-3">
-                          {visiblePhotos.map((src, i) => {
-                            const isLastVisible = i === MAX_THUMBS - 1;
+                      {item.description && (
+                        <p className="text-sm text-neutral-400 leading-relaxed mt-4 whitespace-pre-line">
+                          {item.description}
+                        </p>
+                      )}
 
-                            return (
-                              <button
-                                key={src}
-                                type="button"
-                                onClick={() => setLightbox({ photos: item.photos, index: i })}
-                                className="relative w-14 h-14 shrink-0 rounded-xl overflow-hidden ring-1 ring-yellow-200/20 hover:ring-yellow-200/70 hover:scale-105 transition cursor-zoom-in"
-                                aria-label={item.name}
-                              >
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img src={src} alt="" className="w-full h-full object-cover" />
-                                {isLastVisible && remaining > 0 && (
-                                  <span className="absolute inset-0 bg-black/60 flex items-center justify-center text-sm text-white">
-                                    +{remaining}
-                                  </span>
-                                )}
-                              </button>
-                            );
-                          })}
-                        </div>
+                      {item.features && item.features.length > 0 && (
+                        <ul className="mt-3 space-y-1.5">
+                          {item.features.map((feature) => (
+                            <li key={feature} className="flex items-start gap-2 text-sm text-neutral-300">
+                              <span className="mt-2 w-1 h-1 rounded-full bg-yellow-200 shrink-0" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
                       )}
                     </li>
                   );
                 })}
               </ul>
-            </div>
+            </section>
           </FadeInSection>
         ))}
       </div>

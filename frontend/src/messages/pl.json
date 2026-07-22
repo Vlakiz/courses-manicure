@@ -58,29 +58,29 @@
       {
         "title": "Manicure",
         "items": [
-          { "id": "manicure-classic", "name": "Manicure klasyczny", "price": "100 zł" },
-          { "id": "manicure-hybrid", "name": "Manicure hybrydowy", "price": "170 zł" },
-          { "id": "manicure-removal", "name": "Ściągnięcie paznokci", "price": "50 zł" },
-          { "id": "manicure-fill", "name": "Dopełnienie żelem / acrylożelem", "price": "200 zł" },
-          { "id": "manicure-extension-s", "name": "Przedłużanie paznokci S", "price": "230 zł" },
-          { "id": "manicure-extension-m", "name": "Przedłużanie paznokci M", "price": "250 zł" }
+          { "id": "manicure-classic", "name": "Manicure klasyczny", "price": "100 zł", "duration": "40 min", "description": "Estetyczny wygląd paznokci, opracowanie skórek i przyjemny masaż na zakończenie." },
+          { "id": "manicure-hybrid", "name": "Manicure hybrydowy", "price": "170 zł", "duration": "75 min", "description": "Pokrycie paznokci lakierem hybrydowym – polecam na krótkie paznokcie. Dokładnie i ekonomicznie, ale nie gwarantuje wzmocnienia!" },
+          { "id": "manicure-removal", "name": "Ściągnięcie paznokci", "price": "50 zł", "duration": "30 min", "description": "Ściągnięcie sztucznych paznokci bez dodatkowych usług." },
+          { "id": "manicure-fill", "name": "Dopełnienie żelem / acrylożelem", "price": "200 zł", "duration": "90 min", "description": "Wzmocnienie naturalnej płytki żelem lub acrylożelem – idealne dla osób, których paznokcie są cienkie, łamliwe lub rozdwajające się.\nStylizacja bez przedłużania,ale z dodatkową warstwą, która zwiększa trwałość manicure." },
+          { "id": "manicure-extension-s", "name": "Przedłużanie paznokci S", "price": "230 zł", "duration": "120 min", "description": "Przedłużanie paznokci (1-2 długości) – tworzenie sztucznej długości za pomocą żelu lub akrylu. Pozwala skorygować kształt paznokci, sprawia, że wyglądają smuklej i są mocniejsze. Zawiera przygotowanie płytki, modelowanie, opracowanie kształtu oraz nałożenie koloru lub zdobienia według życzenia." },
+          { "id": "manicure-extension-m", "name": "Przedłużanie paznokci M", "price": "250 zł", "duration": "150 min", "description": "Przedłużanie paznokci (3-4 długość) – stylizacja żelowa z nadaniem kształtu i długości." }
         ]
       },
       {
         "title": "Pedicure",
         "items": [
-          { "id": "pedicure-classic", "name": "Pedicure klasyczny", "price": "150 zł" },
-          { "id": "pedicure-hybrid", "name": "Pedicure hybrydowy", "price": "200 zł" },
-          { "id": "pedicure-toes", "name": "Pedicure – tylko palce", "price": "170 zł" }
+          { "id": "pedicure-classic", "name": "Pedicure klasyczny", "price": "150 zł", "duration": "60 min", "description": "Pedicure klasyczny – opracowanie paznokci i skórek, usunięcie zrogowaceń, nawilżenie stóp." },
+          { "id": "pedicure-hybrid", "name": "Pedicure hybrydowy", "price": "200 zł", "duration": "75 min", "description": "Pedicure z lakierem hybrydowym (żelowym) – opracowanie paznokci i skórek, usunięcie zrogowaceń, a następnie nałożenie trwałego lakieru hybrydowego, który zapewnia piękny wygląd paznokci na wiele tygodni." },
+          { "id": "pedicure-toes", "name": "Pedicure – tylko palce", "price": "170 zł", "duration": "60 min", "description": "Pedicure tylko palce – opracowanie paznokci i skórek na palcach stóp bez pracy na podeszwach. Idealne rozwiązanie, jeśli chcesz zadbać o estetykę paznokci, ale nie potrzebujesz usuwania zrogowaceń." }
         ]
       },
       {
         "title": "Zestawy",
         "items": [
-          { "id": "set-gel-pedicure", "name": "Żel + Pedicure", "price": "380 zł" },
-          { "id": "set-hybrid-pedicure", "name": "Hybryda + Pedicure", "price": "350 zł" },
-          { "id": "set-removal-manicure", "name": "Ściągnięcie stylizacji żelowej + manicure classic", "price": "120 zł" },
-          { "id": "set-classic-hands-feet", "name": "Classic ręce + nogi", "price": "220 zł" }
+          { "id": "set-gel-pedicure", "name": "Żel + Pedicure", "price": "380 zł", "duration": "180 min", "description": "Kompleksowa stylizacja żelowa dłoni i pedicure w jednej wizycie.", "features": ["Wzmocnienie naturalnych paznokci i hybryda na stopach z opracowaniem stóp", "Naprawa jednego paznokcia", "Ściągnięcie starej stylizacji"] },
+          { "id": "set-hybrid-pedicure", "name": "Hybryda + Pedicure", "price": "350 zł", "duration": "165 min", "description": "Kompleksowa stylizacja hybrydowa dłoni i pedicure w jednej wizycie.", "features": ["Manicure hybrydowy i hybryda na stopach z opracowaniem stóp", "Naprawa jednego paznokcia", "Ściągnięcie starej stylizacji"] },
+          { "id": "set-removal-manicure", "name": "Ściągnięcie stylizacji żelowej + manicure classic", "price": "120 zł", "duration": "60 min", "description": "Zdjęcie starej stylizacji i manicure klasyczny w jednej wizycie." },
+          { "id": "set-classic-hands-feet", "name": "Classic ręce + nogi", "price": "220 zł", "duration": "100 min", "description": "Lubisz naturalny wygląd paznokci? Ale chcesz, żeby wyglądały na zadbane?\nZapraszam na opracowanie dłoni i stóp – w pakiecie taniej!" }
         ]
       }
     ]

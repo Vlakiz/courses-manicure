@@ -19,6 +19,9 @@ type RawPriceItem = {
   id: string;
   name: string;
   price: string;
+  duration?: string;
+  description?: string;
+  features?: string[];
 };
 
 type RawPriceCategory = {
