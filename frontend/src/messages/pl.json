@@ -4,7 +4,7 @@
     "description": "Studio manicure i kursów manicure w Gdańsku."
   },
   "nav": {
-    "about": "O mnie",
+    "about": "O salonie",
     "prices": "Cennik",
     "courses": "Kursy",
     "book": "Zapisz się"
@@ -52,7 +52,7 @@
     },
     "headingMain": "Usługi i",
     "headingHighlight": "cennik",
-    "note": "Dokładna cena zależy od długości i kształtu paznokci i jest ustalana podczas konsultacji.",
+    "note": "",
     "cta": "Zapisz się",
     "categories": [
       {

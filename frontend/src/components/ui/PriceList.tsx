@@ -75,7 +75,7 @@ export default function PriceList({ categories }: Props) {
                   return (
                     <li
                       key={item.id}
-                      className="group bg-neutral-900/50 rounded-2xl p-5 sm:p-6 hover:bg-neutral-900/70 transition-colors duration-300"
+                      className="group glass-card p-5 sm:p-6 cursor-pointer"
                     >
                       <div className="flex items-start gap-4">
                         {hasPhotos && (

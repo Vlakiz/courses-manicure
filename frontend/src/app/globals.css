@@ -65,6 +65,18 @@ body {
    }
 }
 
+.glass-card {
+  @apply relative overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/40 backdrop-blur-xl backdrop-saturate-150
+         shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),inset_0_-16px_24px_-20px_rgba(0,0,0,0.55),0_8px_24px_-14px_rgba(0,0,0,0.6)]
+         transition-all duration-300 ease-out
+         hover:hover:bg-neutral-700/25 hover:border-white/15
+         hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),inset_0_-16px_24px_-20px_rgba(0,0,0,0.5),0_20px_45px_-12px_rgba(0,0,0,0.7)]
+         before:absolute before:inset-0 before:pointer-events-none before:rounded-3xl
+         before:bg-[linear-gradient(135deg,rgba(255,255,255,0.09)_0%,transparent_35%,transparent_55%,rgba(255,255,255,0.03)_100%)]
+         after:absolute after:-inset-px after:pointer-events-none after:rounded-3xl
+         after:bg-[radial-gradient(140%_70%_at_15%_-10%,rgba(255,255,255,0.1),transparent_60%)];
+}
+
 @theme {
   --animate-fade-in: fadeIn 0.2s ease-out;
 
