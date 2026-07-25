@@ -36,14 +36,16 @@
   "footer": {
     "social": "Media społecznościowe",
     "hours": "Godziny pracy",
-    "workDays": "Wtorek - Sobota",
-    "workHours": "10:00 - 20:00",
+    "workDays": "Wtorek - Czwartek",
+    "workHours": "12:00 - 19:30",
+    "workDays2": "Piątek - Sobota",
+    "workHours2": "10:30 - 20:00",
     "restDays": "Niedziela - Poniedziałek",
     "dayOff": "nieczynne",
     "contacts": "Kontakt",
     "phone": "+48 123 456 789",
     "address": "Gdansk, ul.Polna 15",
-    "copyright": "© 2025 Ro.Manic. Studio manicure w Gdańsku."
+    "copyright": "© 2026 Ro.Manic. Studio manicure w Gdańsku."
   },
   "prices": {
     "seo": {
@@ -54,6 +56,10 @@
     "headingHighlight": "cennik",
     "note": "",
     "cta": "Zapisz się",
+    "closing": {
+      "heading": "Gotowa na piękny manicure?",
+      "subtitle": "Napisz lub zadzwoń — dobierzemy dogodny termin i usługę idealną dla Ciebie."
+    },
     "categories": [
       {
         "title": "Manicure",

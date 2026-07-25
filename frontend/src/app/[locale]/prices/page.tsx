@@ -83,8 +83,18 @@ export default async function Prices({ params }: Props) {
         </div>
       </div>
 
-      <div className="flex justify-center pb-20">
-        <button className="btn-schedule">{t("cta").toUpperCase()}</button>
+      <div className="flex justify-center px-3 md:px-0 pb-20">
+        <div className="glass-card w-full max-w-3xl text-center py-14 px-6 md:py-16 md:px-12">
+          <h2 className="text-3xl md:text-4xl leading-snug select-none text-yellow-100">
+            {t("closing.heading")}
+          </h2>
+          <p className="mt-4 text-neutral-400 text-lg max-w-xl mx-auto">
+            {t("closing.subtitle")}
+          </p>
+          <div className="mt-8">
+            <button className="btn-cta min-w-xs justify-center">{t("cta").toUpperCase()}</button>
+          </div>
+        </div>
       </div>
     </div>
   );
