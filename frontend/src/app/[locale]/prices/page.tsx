@@ -84,15 +84,21 @@ export default async function Prices({ params }: Props) {
       </div>
 
       <div className="flex justify-center px-3 md:px-0 pb-20">
-        <div className="glass-card w-full max-w-3xl text-center py-14 px-6 md:py-16 md:px-12">
-          <h2 className="text-3xl md:text-4xl leading-snug select-none text-yellow-100">
-            {t("closing.heading")}
-          </h2>
-          <p className="mt-4 text-neutral-400 text-lg max-w-xl mx-auto">
-            {t("closing.subtitle")}
-          </p>
-          <div className="mt-8">
-            <button className="btn-cta min-w-xs justify-center">{t("cta").toUpperCase()}</button>
+        <div className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/60 grid grid-cols-1 md:grid-cols-5">
+          <div className="md:col-span-3 py-14 px-6 md:py-16 md:px-12 text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl leading-snug select-none text-yellow-100">
+              {t("closing.heading")}
+            </h2>
+            <p className="mt-4 text-neutral-400 text-lg max-w-xl mx-auto md:mx-0">
+              {t("closing.subtitle")}
+            </p>
+            <div className="mt-8 flex justify-center md:justify-start">
+              <button className="btn-cta min-w-xs justify-center">{t("cta").toUpperCase()}</button>
+            </div>
+          </div>
+          <div className="hidden md:flex md:col-span-2 items-center justify-center relative">
+            <div className="pointer-events-none absolute w-56 h-56 rounded-full bg-yellow-300/20 blur-3xl" />
+            <span className="relative text-8xl select-none">💅</span>
           </div>
         </div>
       </div>
