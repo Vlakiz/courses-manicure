@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight, faClock, faImages, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faClock, faImages } from "@fortawesome/free-solid-svg-icons";
 
 import FadeInSection from "@/components/ui/FadeInSection";
+import PhotoLightbox from "@/components/ui/PhotoLightbox";
 
 export type PriceItem = {
   id: string;
@@ -33,31 +34,6 @@ type LightboxState = {
 
 export default function PriceList({ categories }: Props) {
   const [lightbox, setLightbox] = useState<LightboxState | null>(null);
-  const touchStartX = useRef<number | null>(null);
-
-  const next = () =>
-    setLightbox((s) => (s ? { ...s, index: (s.index + 1) % s.photos.length } : s));
-
-  const prev = () =>
-    setLightbox((s) => (s ? { ...s, index: (s.index - 1 + s.photos.length) % s.photos.length } : s));
-
-  useEffect(() => {
-    if (!lightbox) return;
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setLightbox(null);
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
-    };
-
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lightbox !== null]);
 
   return (
     <>
@@ -142,73 +118,12 @@ export default function PriceList({ categories }: Props) {
       </div>
 
       {lightbox && (
-        <div
-          className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
-          onClick={() => setLightbox(null)}
-          onTouchStart={(e) => {
-            touchStartX.current = e.touches[0].clientX;
-          }}
-          onTouchEnd={(e) => {
-            if (touchStartX.current === null) return;
-            const delta = e.changedTouches[0].clientX - touchStartX.current;
-            if (Math.abs(delta) > 50) {
-              if (delta < 0) next();
-              else prev();
-            }
-            touchStartX.current = null;
-          }}
-        >
-          <button
-            type="button"
-            onClick={() => setLightbox(null)}
-            className="absolute top-4 right-4 md:top-6 md:right-6 text-white/80 hover:text-white cursor-pointer p-2"
-            aria-label="Close"
-          >
-            <FontAwesomeIcon icon={faXmark} className="text-3xl" />
-          </button>
-
-          {lightbox.photos.length > 1 && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                prev();
-              }}
-              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white cursor-pointer p-2"
-              aria-label="Previous"
-            >
-              <FontAwesomeIcon icon={faChevronLeft} className="text-3xl md:text-4xl" />
-            </button>
-          )}
-
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={lightbox.photos[lightbox.index]}
-            alt=""
-            className="max-h-[85vh] max-w-[92vw] object-contain rounded-2xl shadow-2xl select-none animate-scale-in"
-            onClick={(e) => e.stopPropagation()}
-          />
-
-          {lightbox.photos.length > 1 && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                next();
-              }}
-              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white cursor-pointer p-2"
-              aria-label="Next"
-            >
-              <FontAwesomeIcon icon={faChevronRight} className="text-3xl md:text-4xl" />
-            </button>
-          )}
-
-          {lightbox.photos.length > 1 && (
-            <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-sm">
-              {lightbox.index + 1} / {lightbox.photos.length}
-            </div>
-          )}
-        </div>
+        <PhotoLightbox
+          photos={lightbox.photos}
+          index={lightbox.index}
+          onIndexChange={(index) => setLightbox((s) => (s ? { ...s, index } : s))}
+          onClose={() => setLightbox(null)}
+        />
       )}
     </>
   );

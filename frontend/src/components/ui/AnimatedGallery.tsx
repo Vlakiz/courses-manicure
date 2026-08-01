@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
@@ -17,6 +17,7 @@ export default function ImageSlider({
 }: Props) {
     const [index, setIndex] = useState(0);
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const touchStartX = useRef<number | null>(null);
 
     const next = () => {
         setIndex((prev) => (prev + 1) % images.length);
@@ -47,6 +48,21 @@ export default function ImageSlider({
                 if (timeoutRef.current) clearTimeout(timeoutRef.current);
             }}
             onMouseLeave={resetAutoplay}
+            onTouchStart={(e) => {
+                if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                touchStartX.current = e.touches[0].clientX;
+            }}
+            onTouchEnd={(e) => {
+                if (touchStartX.current !== null) {
+                    const delta = e.changedTouches[0].clientX - touchStartX.current;
+                    if (Math.abs(delta) > 50) {
+                        if (delta < 0) next();
+                        else prev();
+                    }
+                    touchStartX.current = null;
+                }
+                resetAutoplay();
+            }}
         >
         <div
             className="transition-transform duration-500 flex align-middle"

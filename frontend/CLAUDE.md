@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Marketing site for Ro.Manic, a nail-manicure studio and manicure-courses business in Gdańsk. Next.js 15 (App Router) + React 19 + TypeScript + Tailwind CSS v4, internationalized with next-intl (`pl` / `ua` / `ru`). Currently a single-page static marketing site — no backend, forms, or data mutations yet.
+Marketing site for Ro.Manic, a nail-manicure studio and manicure-courses business in Gdańsk. Next.js 15 (App Router) + React 19 + TypeScript + Tailwind CSS v4, internationalized with next-intl (`pl` / `ua` / `ru`). Static site — no backend, forms, or data mutations yet. Three pages so far: home (`/`), services & pricing (`/prices`), and the salon/about page (`/about`).
 
 This `frontend/` directory is one service inside a larger monorepo (sibling `backend/`, `db` in the root `docker-compose.yml`).
 
@@ -66,12 +66,18 @@ Every `page.tsx`/`layout.tsx` under `[locale]` must validate the incoming `local
 This project's toolchain resolves to **TypeScript 6.x**, which is stricter about side-effect imports than most guides assume. Ambient module declarations for extensionless/CSS side-effect imports live in `css.d.ts` at the repo root — it must stay a file with **no top-level `import`/`export`** (that would make it a module and scope its wildcard `declare module` statements to itself instead of globally). Keep any new global ambient declarations that use `declare module "*.ext"` wildcard syntax in `css.d.ts`, not in `global.d.ts` (which has imports and is a module).
 
 ### Styling
-Tailwind CSS v4, configured CSS-first in `src/app/globals.css` (`@import "tailwindcss"`, `@theme` blocks) — there is no `tailwind.config.js`. Custom animations (`animate-background`, `animate-marquee`) and the `.btn-schedule` utility class are defined there.
+Tailwind CSS v4, configured CSS-first in `src/app/globals.css` (`@import "tailwindcss"`, `@theme` blocks) — there is no `tailwind.config.js`. Custom animations (`animate-background`, `animate-marquee`, `animate-fade-in`, `animate-scale-in`, `animate-cta-glow`) and hand-rolled utility classes (`.btn-schedule`, `.btn-cta`, `.glass-card`) are defined there, all following the same convention: a base class built with `@apply`, with `before:`/`after:` pseudo-elements layered in for gradient/glow accents rather than extra markup. `.glass-card` is the shared "frosted panel" look used for cards on `/prices` and `/about`; `.btn-cta` is a larger, glowing variant of `.btn-schedule` for page-level closing CTAs — the header's own book button stays on `.btn-schedule`, deliberately smaller/plainer.
 
 ### Fonts
 `src/lib/fonts.ts` loads three `next/font/google` fonts (Commissioner, Ephesis, Manrope). Commissioner and Manrope include `latin`, `latin-ext`, and `cyrillic` subsets — `latin-ext` is required for Polish diacritics (ą, ć, ę, ł, ń, ó, ś, ź, ż); don't drop it when touching this file.
 
 ### Component layout
 - `src/components/layout/` — `Header` (nav + `LanguageSwitcher`) and `Footer`, both rendered once in `src/app/[locale]/layout.tsx`
-- `src/components/ui/` — page-level presentational pieces (`AnimatedGallery`, `FadeInSection`, `Marquee`, `ReviewSlider`) used only by the home page
-- `src/data/reviews.ts` — static review content (real client testimonials, kept in their original language regardless of site locale — do not run these through translation)
+- `src/components/ui/` — presentational pieces shared across pages: `AnimatedGallery`, `FadeInSection`, `Marquee`, `ReviewSlider` (home page), `PriceList` (services/pricing cards + photo lightbox, used by `/prices`)
+- `src/data/` — static content kept out of the messages JSON:
+  - `reviews.ts` — real client testimonials, kept in their original language regardless of site locale — do not run these through translation
+  - `servicePhotos.ts` / `salonPhotos.ts` — `id` (or index) → image path lookups for photos the site owner adds later, pointing into `public/images/prices/` and `public/images/about/` respectively. Entries start empty/missing on purpose; the corresponding page renders a placeholder tile in that case, so an empty lookup is expected state, not a bug.
+- Content pages (`/prices`, `/about`) share a page shape: a centered `h1` with a `text-yellow-100` highlight span, `FadeInSection`-wrapped content blocks, and a closing CTA card near the bottom built around the `.btn-cta` button.
+
+### External embeds
+`/about` embeds Google Maps **without an API key** via the public `https://www.google.com/maps?q=<address>&output=embed` iframe URL, alongside a plain `https://www.google.com/maps/search/?api=1&query=<address>` link that opens the same address in Google Maps itself. The address string lives once in `messages.footer.address` and is reused there rather than duplicated into `about`.

@@ -7,7 +7,9 @@
     "about": "O salonie",
     "prices": "Cennik",
     "courses": "Kursy",
-    "book": "Zapisz się"
+    "book": "Zapisz się",
+    "openMenu": "Otwórz menu",
+    "closeMenu": "Zamknij menu"
   },
   "home": {
     "hero": {
@@ -46,6 +48,58 @@
     "phone": "+48 123 456 789",
     "address": "Gdansk, ul.Polna 15",
     "copyright": "© 2026 Ro.Manic. Studio manicure w Gdańsku."
+  },
+  "about": {
+    "seo": {
+      "title": "Ro.Manic | O salonie",
+      "description": "Poznaj studio manicure Ro.Manic w Gdańsku: doświadczona stylistka, adres i godziny otwarcia."
+    },
+    "hero": {
+      "headingMain": "O",
+      "headingHighlight": "salonie",
+      "subtitle": "Przytulne studio manicure i szkoleń w samym sercu Gdańska."
+    },
+    "master": {
+      "heading": "Twoja stylistka",
+      "name": "Żenia",
+      "role": "Stylistka paznokci i wykładowczyni",
+      "experience": "8+ lat praktyki",
+      "bio1": "Pracuję w branży beauty od ponad ośmiu lat i przez cały ten czas nieustannie się dokształcam — biorę udział w kursach doskonalących i śledzę trendy w świecie nail art.",
+      "bio2": "Przez moje ręce przeszły setki klientek, a dodatkowo wyszkoliłam już kilkanaście stylistek paznokci, które dziś z powodzeniem pracują w całej Polsce.",
+      "bio3": "Dla mnie liczy się nie tylko piękny manicure, ale też atmosfera, w której możesz się zrelaksować i poczuć, że ktoś naprawdę o Ciebie dba."
+    },
+    "values": {
+      "heading": "Dlaczego warto wybrać",
+      "headingHighlight": "nas",
+      "items": [
+        { "icon": "shield", "title": "Sterylność i bezpieczeństwo", "description": "Wszystkie narzędzia przechodzą sterylizację w autoklawie, a jednorazowe pilniki i bafy są używane tylko raz." },
+        { "icon": "gem", "title": "Najwyższej jakości materiały", "description": "Pracuję wyłącznie ze sprawdzonymi, profesjonalnymi markami lakierów hybrydowych i kosmetyków pielęgnacyjnych." },
+        { "icon": "heart", "title": "Indywidualne podejście", "description": "Wizyta jeden na jeden, bez pośpiechu — uwzględniam życzenia i potrzeby każdej klientki." },
+        { "icon": "graduate", "title": "Wieloletnie doświadczenie i edukacja", "description": "Regularnie podnoszę kwalifikacje i przekazuję wiedzę na własnych kursach manicure." }
+      ]
+    },
+    "gallery": {
+      "heading": "Nasze",
+      "headingHighlight": "studio",
+      "subtitle": "Odrobina atmosfery studia — zdjęcia wnętrza pojawią się tutaj już wkrótce.",
+      "placeholder": "Zdjęcie wkrótce"
+    },
+    "hygiene": {
+      "heading": "Czystość i bezpieczeństwo przede wszystkim",
+      "text": "Wszystkie narzędzia są sterylizowane w autoklawie po każdej klientce, używam jednorazowych materiałów i certyfikowanych środków dezynfekujących. Twoje zdrowie i bezpieczeństwo to konieczność, a nie opcja."
+    },
+    "location": {
+      "heading": "Jak nas",
+      "headingHighlight": "znaleźć",
+      "addressLabel": "Adres",
+      "hoursLabel": "Godziny pracy",
+      "mapLink": "Otwórz w Mapach Google"
+    },
+    "closing": {
+      "heading": "Gotowa poznać nas osobiście?",
+      "subtitle": "Zapisz się na dogodny termin — z przyjemnością powitam Cię w moim studio."
+    },
+    "cta": "Zapisz się"
   },
   "prices": {
     "seo": {
