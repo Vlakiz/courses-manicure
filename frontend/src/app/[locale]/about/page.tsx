@@ -25,7 +25,7 @@ import {
 import FadeInSection from "@/components/ui/FadeInSection";
 import SalonGallery from "@/components/ui/SalonGallery";
 
-import aboutImage from "@/../public/images/home/about.webp";
+import masterImage from "@/../public/images/about/master.webp";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -96,10 +96,10 @@ export default async function About({ params }: Props) {
           <div className="container grid grid-cols-1 lg:grid-cols-3 gap-10 px-3 md:px-0 items-center">
             <div className="lg:col-span-1">
               <Image
-                src={aboutImage}
+                src={masterImage}
                 alt=""
                 width={600}
-                className="rounded-3xl w-full [mask-image:radial-gradient(circle,background_75%,transparent_100%)]"
+                className="w-full"
               />
             </div>
             <div className="lg:col-span-2">
