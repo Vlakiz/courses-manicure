@@ -81,7 +81,7 @@ export default function Footer() {
                   </p>
                 </div>
               </div>
-              <div className="text-center mt-10 md:mt-0">
+              <div className="text-center text-neutral-500 mt-10 md:mt-0">
                 {t("copyright")}
               </div>
             </div>

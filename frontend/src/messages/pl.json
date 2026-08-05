@@ -44,6 +44,15 @@
     "workHours2": "10:30 - 20:00",
     "restDays": "Niedziela - Poniedziałek",
     "dayOff": "nieczynne",
+    "days": {
+      "mon": "Pon",
+      "tue": "Wt",
+      "wed": "Śr",
+      "thu": "Czw",
+      "fri": "Pt",
+      "sat": "Sob",
+      "sun": "Ndz"
+    },
     "contacts": "Kontakt",
     "phone": "+48 123 456 789",
     "address": "Gdansk, ul.Polna 15",
@@ -81,19 +90,37 @@
     "gallery": {
       "heading": "Nasze",
       "headingHighlight": "studio",
-      "subtitle": "Odrobina atmosfery studia — zdjęcia wnętrza pojawią się tutaj już wkrótce.",
+      "subtitle": "Zajrzyj za kulisy — oto atmosfera, w której powstaje Twój idealny manicure.",
       "placeholder": "Zdjęcie wkrótce"
     },
+    "comfort": {
+      "heading": "Troska",
+      "headingHighlight": "w każdym detalu",
+      "subtitle": "Chcę, żebyś nie tylko zrobiła manicure, ale naprawdę odetchnęła, gdy pracuję.",
+      "items": [
+        { "icon": "cozy", "title": "Przytulna atmosfera", "description": "Ciepłe światło, przyjemna muzyka i spokojne tempo — tutaj nikt się nie spieszy." },
+        { "icon": "netflix", "title": "Netflix i YouTube", "description": "W gabinecie jest telewizor — włączę ulubiony serial lub film, żeby czas zabiegu minął niezauważenie." },
+        { "icon": "drinks", "title": "Kawa, herbata i drobna przekąska", "description": "Poczęstuję Cię kawą lub herbatą i czymś smacznym — poczuj się jak z wizytą, a nie w kolejce." },
+        { "icon": "gift", "title": "Miłe drobiazgi", "description": "Od czasu do czasu rozpieszczam klientki drobnymi upominkami z okazji świąt — po prostu w podziękowaniu za zaufanie." }
+      ]
+    },
     "hygiene": {
-      "heading": "Czystość i bezpieczeństwo przede wszystkim",
-      "text": "Wszystkie narzędzia są sterylizowane w autoklawie po każdej klientce, używam jednorazowych materiałów i certyfikowanych środków dezynfekujących. Twoje zdrowie i bezpieczeństwo to konieczność, a nie opcja."
+      "heading": "Czystość i bezpieczeństwo",
+      "headingHighlight": "przede wszystkim",
+      "subtitle": "Twoje zdrowie to nie opcja, a warunek konieczny każdego zabiegu. Oto jak to zapewniam:",
+      "items": [
+        { "icon": "sterilize", "title": "Sterylizacja w autoklawie", "description": "Wszystkie narzędzia wielokrotnego użytku przechodzą pełny cykl sterylizacji w autoklawie po każdej klientce — jak w placówkach medycznych." },
+        { "icon": "singleUse", "title": "Materiały jednorazowe", "description": "Pilniki, bafy, chusteczki i inne materiały eksploatacyjne używane są tylko raz i od razu utylizowane." },
+        { "icon": "certified", "title": "Certyfikowana dezynfekcja", "description": "Powierzchnia robocza, ręce i narzędzia są dezynfekowane certyfikowanymi środkami przed i po każdej wizycie." }
+      ]
     },
     "location": {
       "heading": "Jak nas",
       "headingHighlight": "znaleźć",
       "addressLabel": "Adres",
       "hoursLabel": "Godziny pracy",
-      "mapLink": "Otwórz w Mapach Google"
+      "mapLink": "Otwórz w Mapach Google",
+      "contactHint": "Dostępny również na:"
     },
     "closing": {
       "heading": "Gotowa poznać nas osobiście?",

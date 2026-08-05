@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import clsx from "clsx";
 
 import Image from "next/image";
@@ -12,15 +13,23 @@ import { salonPhotos } from "@/data/salonPhotos";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faBan,
+  faCertificate,
   faClock,
+  faCouch,
   faGem,
+  faGift,
   faHeart,
   faLocationDot,
+  faMugHot,
   faPhone,
   faShieldHalved,
+  faSprayCanSparkles,
+  faTv,
   faUserGraduate,
   type IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
+import { faTelegram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 import FadeInSection from "@/components/ui/FadeInSection";
 import SalonGallery from "@/components/ui/SalonGallery";
@@ -31,7 +40,7 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-type ValueItem = {
+type FeatureItem = {
   icon: string;
   title: string;
   description: string;
@@ -42,6 +51,19 @@ const VALUE_ICONS: Record<string, IconDefinition> = {
   gem: faGem,
   heart: faHeart,
   graduate: faUserGraduate,
+};
+
+const HYGIENE_ICONS: Record<string, IconDefinition> = {
+  sterilize: faSprayCanSparkles,
+  singleUse: faBan,
+  certified: faCertificate,
+};
+
+const COMFORT_ICONS: Record<string, IconDefinition> = {
+  cozy: faCouch,
+  netflix: faTv,
+  drinks: faMugHot,
+  gift: faGift,
 };
 
 const GALLERY_SLOTS = 9;
@@ -72,11 +94,29 @@ export default async function About({ params }: Props) {
 
   const t = await getTranslations("about");
   const tFooter = await getTranslations("footer");
-  const values = t.raw("values.items") as ValueItem[];
+  const values = t.raw("values.items") as FeatureItem[];
+  const hygieneItems = t.raw("hygiene.items") as FeatureItem[];
+  const comfortItems = t.raw("comfort.items") as FeatureItem[];
 
   const address = tFooter("address");
   const mapEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
   const mapLinkHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
+  const phone = tFooter("phone");
+  const phoneDigits = phone.replace(/\D/g, "");
+  const phoneTelHref = `tel:+${phoneDigits}`;
+  const whatsappHref = `https://wa.me/${phoneDigits}`;
+  const telegramHref = `https://t.me/+${phoneDigits}`;
+
+  const schedule = [
+    { day: tFooter("days.mon"), hours: tFooter("dayOff"), closed: true },
+    { day: tFooter("days.tue"), hours: tFooter("workHours"), closed: false },
+    { day: tFooter("days.wed"), hours: tFooter("workHours"), closed: false },
+    { day: tFooter("days.thu"), hours: tFooter("workHours"), closed: false },
+    { day: tFooter("days.fri"), hours: tFooter("workHours2"), closed: false },
+    { day: tFooter("days.sat"), hours: tFooter("workHours2"), closed: false },
+    { day: tFooter("days.sun"), hours: tFooter("dayOff"), closed: true },
+  ];
 
   return (
     <div className={clsx(manrope.className)}>
@@ -140,7 +180,7 @@ export default async function About({ params }: Props) {
       </FadeInSection>
 
       <FadeInSection>
-        <div className="flex justify-center mt-16 md:mt-24 px-3 md:px-0">
+        <div className="bg-neutral-900/50 mt-16 md:mt-24 py-14 md:py-20 flex justify-center px-3 md:px-0">
           <div className="container text-center">
             <h2 className="text-3xl md:text-4xl text-neutral-100/90 select-none leading-tight">
               {t("gallery.heading")} <span className="text-yellow-100">{t("gallery.headingHighlight")}</span>
@@ -160,14 +200,45 @@ export default async function About({ params }: Props) {
 
       <FadeInSection>
         <div className="flex justify-center mt-16 md:mt-24 px-3 md:px-0">
-          <div className="glass-card container max-w-4xl py-12 px-6 md:px-12 text-center">
-            <FontAwesomeIcon icon={faShieldHalved} className="text-4xl text-yellow-200" />
-            <h2 className="mt-4 text-2xl md:text-3xl text-neutral-100/90 select-none">
-              {t("hygiene.heading")}
+          <div className="container text-center">
+            <h2 className="text-3xl md:text-4xl text-neutral-100/90 select-none leading-tight">
+              {t("comfort.heading")} <span className="text-yellow-100">{t("comfort.headingHighlight")}</span>
             </h2>
-            <p className="mt-4 text-neutral-400 max-w-2xl mx-auto leading-relaxed">
-              {t("hygiene.text")}
+            <p className="mt-4 text-neutral-400 max-w-xl mx-auto">
+              {t("comfort.subtitle")}
             </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 text-left">
+              {comfortItems.map((item) => (
+                <div key={item.title} className="glass-card p-6">
+                  <FontAwesomeIcon icon={COMFORT_ICONS[item.icon]} className="text-3xl text-yellow-200" />
+                  <h3 className="mt-4 text-lg text-neutral-100">{item.title}</h3>
+                  <p className="mt-2 text-sm text-neutral-400 leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </FadeInSection>
+
+      <FadeInSection>
+        <div className="bg-neutral-900/50 mt-16 md:mt-24 py-14 md:py-20 flex justify-center px-3 md:px-0">
+          <div className="container text-center">
+            <FontAwesomeIcon icon={faShieldHalved} className="text-4xl text-yellow-200" />
+            <h2 className="mt-4 text-3xl md:text-4xl text-neutral-100/90 select-none leading-tight">
+              {t("hygiene.heading")} <span className="text-yellow-100">{t("hygiene.headingHighlight")}</span>
+            </h2>
+            <p className="mt-4 text-neutral-400 max-w-xl mx-auto">
+              {t("hygiene.subtitle")}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 text-left">
+              {hygieneItems.map((item) => (
+                <div key={item.title} className="glass-card p-6">
+                  <FontAwesomeIcon icon={HYGIENE_ICONS[item.icon]} className="text-3xl text-yellow-200" />
+                  <h3 className="mt-4 text-lg text-neutral-100">{item.title}</h3>
+                  <p className="mt-2 text-sm text-neutral-400 leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </FadeInSection>
@@ -189,18 +260,46 @@ export default async function About({ params }: Props) {
                 </div>
                 <div className="flex items-start gap-4">
                   <FontAwesomeIcon icon={faClock} className="text-2xl text-yellow-200 mt-1" />
-                  <div>
-                    <div className="text-sm text-neutral-500">{t("location.hoursLabel")}</div>
-                    <div className="text-neutral-100">{tFooter("workDays")} <span className="text-neutral-400 italic">{tFooter("workHours")}</span></div>
-                    <div className="text-neutral-100">{tFooter("workDays2")} <span className="text-neutral-400 italic">{tFooter("workHours2")}</span></div>
-                    <div className="text-neutral-100">{tFooter("restDays")} <span className="text-neutral-400 italic">{tFooter("dayOff")}</span></div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm text-neutral-500 mb-2">{t("location.hoursLabel")}</div>
+                    <div className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1.5 text-sm">
+                      {schedule.map(({ day, hours, closed }) => (
+                        <Fragment key={day}>
+                          <span className="text-neutral-200">{day}</span>
+                          <span className={closed ? "text-neutral-500 italic" : "text-neutral-100"}>{hours}</span>
+                        </Fragment>
+                      ))}
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <FontAwesomeIcon icon={faPhone} className="text-2xl text-yellow-200 mt-1" />
                   <div>
                     <div className="text-sm text-neutral-500">{tFooter("contacts")}</div>
-                    <div className="text-lg text-neutral-100">{tFooter("phone")}</div>
+                    <a href={phoneTelHref} className="text-lg text-neutral-100 hover:text-yellow-200 transition-colors">
+                      {phone}
+                    </a>
+                    <div className="flex items-center gap-3 mt-1.5">
+                      <span className="text-xs text-neutral-500">{t("location.contactHint")}</span>
+                      <a
+                        href={whatsappHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="WhatsApp"
+                        className="text-neutral-400 hover:text-[#25D366] transition-colors"
+                      >
+                        <FontAwesomeIcon icon={faWhatsapp} className="text-lg" />
+                      </a>
+                      <a
+                        href={telegramHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Telegram"
+                        className="text-neutral-400 hover:text-[#26A5E4] transition-colors"
+                      >
+                        <FontAwesomeIcon icon={faTelegram} className="text-lg" />
+                      </a>
+                    </div>
                   </div>
                 </div>
                 <a
