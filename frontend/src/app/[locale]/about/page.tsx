@@ -207,10 +207,12 @@ export default async function About({ params }: Props) {
             <p className="mt-4 text-neutral-400 max-w-xl mx-auto">
               {t("comfort.subtitle")}
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 text-left">
+            <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y divide-white/10 lg:divide-y-0 rounded-3xl border border-white/10 bg-white/[0.02] mt-10 overflow-hidden">
               {comfortItems.map((item) => (
-                <div key={item.title} className="glass-card p-6">
-                  <FontAwesomeIcon icon={COMFORT_ICONS[item.icon]} className="text-3xl text-yellow-200" />
+                <div key={item.title} className="p-6 md:p-8 text-center">
+                  <div className="mx-auto w-14 h-14 rounded-full bg-yellow-400/10 flex items-center justify-center">
+                    <FontAwesomeIcon icon={COMFORT_ICONS[item.icon]} className="text-2xl text-yellow-200" />
+                  </div>
                   <h3 className="mt-4 text-lg text-neutral-100">{item.title}</h3>
                   <p className="mt-2 text-sm text-neutral-400 leading-relaxed">{item.description}</p>
                 </div>
@@ -222,22 +224,30 @@ export default async function About({ params }: Props) {
 
       <FadeInSection>
         <div className="bg-neutral-900/50 mt-16 md:mt-24 py-14 md:py-20 flex justify-center px-3 md:px-0">
-          <div className="container text-center">
-            <FontAwesomeIcon icon={faShieldHalved} className="text-4xl text-yellow-200" />
-            <h2 className="mt-4 text-3xl md:text-4xl text-neutral-100/90 select-none leading-tight">
-              {t("hygiene.heading")} <span className="text-yellow-100">{t("hygiene.headingHighlight")}</span>
-            </h2>
-            <p className="mt-4 text-neutral-400 max-w-xl mx-auto">
-              {t("hygiene.subtitle")}
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 text-left">
-              {hygieneItems.map((item) => (
-                <div key={item.title} className="glass-card p-6">
-                  <FontAwesomeIcon icon={HYGIENE_ICONS[item.icon]} className="text-3xl text-yellow-200" />
-                  <h3 className="mt-4 text-lg text-neutral-100">{item.title}</h3>
-                  <p className="mt-2 text-sm text-neutral-400 leading-relaxed">{item.description}</p>
-                </div>
-              ))}
+          <div className="container">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-center">
+              <div className="lg:col-span-2 text-center lg:text-left">
+                <FontAwesomeIcon icon={faShieldHalved} className="text-4xl text-yellow-200" />
+                <h2 className="mt-4 text-3xl md:text-4xl text-neutral-100/90 select-none leading-tight">
+                  {t("hygiene.heading")} <span className="text-yellow-100">{t("hygiene.headingHighlight")}</span>
+                </h2>
+                <p className="mt-4 text-neutral-400 max-w-md mx-auto lg:mx-0">
+                  {t("hygiene.subtitle")}
+                </p>
+              </div>
+              <div className="lg:col-span-3">
+                <ul className="glass-card divide-y divide-white/10">
+                  {hygieneItems.map((item) => (
+                    <li key={item.title} className="flex items-start gap-4 p-5 md:p-6">
+                      <FontAwesomeIcon icon={HYGIENE_ICONS[item.icon]} className="text-xl text-yellow-200 mt-1 shrink-0" />
+                      <div>
+                        <h3 className="text-neutral-100">{item.title}</h3>
+                        <p className="mt-1 text-sm text-neutral-400 leading-relaxed">{item.description}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
