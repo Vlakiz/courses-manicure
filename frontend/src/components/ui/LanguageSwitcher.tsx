@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { useLocale } from "next-intl";
 
 import { usePathname, useRouter } from "@/i18n/navigation";
@@ -17,22 +18,22 @@ export default function LanguageSwitcher() {
     const pathname = usePathname();
 
     return (
-        <div className="flex items-center space-x-2 text-sm normal-case">
-            {routing.locales.map((loc, i) => (
-                <span key={loc} className="flex items-center">
-                    {i > 0 && <span className="text-neutral-500 mr-2">/</span>}
-                    <button
-                        onClick={() => router.replace(pathname, { locale: loc })}
-                        className={
-                            loc === locale
-                                ? "text-yellow-200 cursor-default"
-                                : "text-neutral-400 hover:text-yellow-200 cursor-pointer transition-colors"
-                        }
-                        disabled={loc === locale}
-                    >
-                        {labels[loc]}
-                    </button>
-                </span>
+        <div className="inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/5 p-1 normal-case select-none">
+            {routing.locales.map((loc) => (
+                <button
+                    key={loc}
+                    type="button"
+                    onClick={() => router.replace(pathname, { locale: loc })}
+                    disabled={loc === locale}
+                    className={clsx(
+                        "px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors",
+                        loc === locale
+                            ? "bg-gray-400/20 text-yellow-100 cursor-default"
+                            : "text-neutral-400 hover:text-neutral-100 hover:bg-white/10 cursor-pointer"
+                    )}
+                >
+                    {labels[loc]}
+                </button>
             ))}
         </div>
     );
