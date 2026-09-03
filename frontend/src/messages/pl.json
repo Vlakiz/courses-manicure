@@ -33,6 +33,11 @@
       "headingSuffix": "moich zadowolonych klientek",
       "prev": "Poprzednia opinia",
       "next": "Następna opinia"
+    },
+    "closing": {
+      "heading": "Twoje idealne paznokcie zaczynają się tutaj",
+      "subtitle": "Zapisz się w kilka kliknięć — dobiorę termin, który będzie dla Ciebie wygodny.",
+      "cta": "Zapisz się"
     }
   },
   "footer": {
