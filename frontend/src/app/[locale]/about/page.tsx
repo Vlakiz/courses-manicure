@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Fragment } from "react";
 import clsx from "clsx";
 
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -35,6 +35,11 @@ import FadeInSection from "@/components/ui/FadeInSection";
 import SalonGallery from "@/components/ui/SalonGallery";
 
 import masterImage from "@/../public/images/about/master.webp";
+import autoclaveImage from "@/../public/images/about/autoclave.webp";
+import safetyImage from "@/../public/images/about/why-us/safety.webp";
+import materialsImage from "@/../public/images/about/why-us/materials.webp";
+import approachImage from "@/../public/images/about/why-us/approach.webp";
+import experienceImage from "@/../public/images/about/why-us/experience.webp";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -51,6 +56,13 @@ const VALUE_ICONS: Record<string, IconDefinition> = {
   gem: faGem,
   heart: faHeart,
   graduate: faUserGraduate,
+};
+
+const VALUE_IMAGES: Record<string, StaticImageData> = {
+  shield: safetyImage,
+  gem: materialsImage,
+  heart: approachImage,
+  graduate: experienceImage,
 };
 
 const HYGIENE_ICONS: Record<string, IconDefinition> = {
@@ -96,6 +108,7 @@ export default async function About({ params }: Props) {
   const tFooter = await getTranslations("footer");
   const values = t.raw("values.items") as FeatureItem[];
   const hygieneItems = t.raw("hygiene.items") as FeatureItem[];
+  const [hygieneSubtitleLine1, hygieneSubtitleLine2] = t("hygiene.subtitle").split(". ");
   const comfortItems = t.raw("comfort.items") as FeatureItem[];
 
   const address = tFooter("address");
@@ -168,10 +181,20 @@ export default async function About({ params }: Props) {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 text-left">
               {values.map((value) => (
-                <div key={value.title} className="glass-card p-6">
-                  <FontAwesomeIcon icon={VALUE_ICONS[value.icon]} className="text-3xl text-yellow-200" />
-                  <h3 className="mt-4 text-lg text-neutral-100">{value.title}</h3>
-                  <p className="mt-2 text-sm text-neutral-400 leading-relaxed">{value.description}</p>
+                <div key={value.title} className="group relative aspect-[3/4] rounded-3xl overflow-hidden ring-1 ring-white/10">
+                  <Image
+                    src={VALUE_IMAGES[value.icon]}
+                    alt=""
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black via-45% via-black/85 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5 [text-shadow:0_1px_6px_rgba(0,0,0,0.65)]">
+                    <FontAwesomeIcon icon={VALUE_ICONS[value.icon]} className="text-2xl text-yellow-200" />
+                    <h3 className="mt-3 text-lg text-neutral-100">{value.title}</h3>
+                    <p className="mt-2 text-sm text-neutral-300 leading-relaxed">{value.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -226,16 +249,32 @@ export default async function About({ params }: Props) {
         <div className="bg-neutral-900/50 mt-16 md:mt-24 py-14 md:py-20 flex justify-center px-3 md:px-0">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-center">
-              <div className="lg:col-span-2 text-center lg:text-left">
-                <FontAwesomeIcon icon={faShieldHalved} className="text-4xl text-yellow-200" />
-                <h2 className="mt-4 text-3xl md:text-4xl text-neutral-100/90 select-none leading-tight">
-                  {t("hygiene.heading")} <span className="text-yellow-100">{t("hygiene.headingHighlight")}</span>
-                </h2>
-                <p className="mt-4 text-neutral-400 max-w-md mx-auto lg:mx-0">
-                  {t("hygiene.subtitle")}
-                </p>
+              <div className="lg:col-span-2">
+                <div className="relative max-w-xs mx-auto lg:mx-0">
+                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-[0_25px_60px_-20px_rgba(0,0,0,0.65)]">
+                    <Image
+                      src={autoclaveImage}
+                      alt=""
+                      fill
+                      sizes="(max-width: 1024px) 60vw, 20vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="absolute -bottom-5 left-6 w-14 h-14 rounded-full bg-yellow-200 flex items-center justify-center shadow-lg ring-4 ring-neutral-900">
+                    <FontAwesomeIcon icon={faShieldHalved} className="text-xl text-neutral-900" />
+                  </div>
+                </div>
+                <div className="mt-8 text-center lg:text-left">
+                  <h2 className="text-3xl md:text-4xl text-neutral-100/90 select-none leading-tight">
+                    {t("hygiene.heading")} <span className="text-yellow-100">{t("hygiene.headingHighlight")}</span>
+                  </h2>
+                </div>
               </div>
               <div className="lg:col-span-3">
+                <p className="border-l-2 border-yellow-200/50 pl-4 mb-6 text-lg text-neutral-300 leading-relaxed">
+                  {hygieneSubtitleLine1}.<br />
+                  {hygieneSubtitleLine2}
+                </p>
                 <ul className="glass-card divide-y divide-white/10">
                   {hygieneItems.map((item) => (
                     <li key={item.title} className="flex items-start gap-4 p-5 md:p-6">
