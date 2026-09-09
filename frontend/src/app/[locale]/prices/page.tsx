@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import clsx from "clsx";
 
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -10,6 +11,9 @@ import { manrope } from "@/lib/fonts";
 import { servicePhotos } from "@/data/servicePhotos";
 
 import PriceList, { type PriceCategory } from "@/components/ui/PriceList";
+import FadeInSection from "@/components/ui/FadeInSection";
+
+import closingVideoPoster from "@/../public/images/prices/closing-video-poster.webp";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -77,31 +81,54 @@ export default async function Prices({ params }: Props) {
         </div>
       </div>
 
-      <div className="flex justify-center mt-10 md:mt-16 pb-20 px-3 md:px-0">
+      <div className="flex justify-center mt-10 md:mt-16 px-3 py-14 md:px-0 bg-neutral-900/50">
         <div className="container">
           <PriceList categories={categories} />
         </div>
       </div>
 
-      <div className="flex justify-center px-3 md:px-0 pb-20">
-        <div className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/60 grid grid-cols-1 md:grid-cols-5">
-          <div className="md:col-span-3 py-14 px-6 md:py-16 md:px-12 text-center md:text-left">
+      <FadeInSection>
+        <div className="relative overflow-hidden flex justify-center py-24 md:py-36">
+          <div className="absolute inset-0 flex justify-center">
+            <div className="relative container">
+              <video
+                aria-hidden
+                autoPlay
+                muted
+                loop
+                playsInline
+                disablePictureInPicture
+                disableRemotePlayback
+                poster="/images/prices/closing-video-poster.webp"
+                className="motion-reduce:hidden absolute inset-0 w-full h-full object-cover opacity-30 [mask-image:linear-gradient(to_right,transparent_0%,black_18%,black_82%,transparent_100%),linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)] [mask-composite:intersect] [-webkit-mask-composite:source-in]"
+              >
+                <source src="/videos/prices/closing-loop.mp4" type="video/mp4" />
+              </video>
+              <Image
+                aria-hidden
+                src={closingVideoPoster}
+                alt=""
+                fill
+                sizes="(max-width: 1536px) 100vw, 1536px"
+                className="hidden motion-reduce:block object-cover opacity-30 [mask-image:linear-gradient(to_right,transparent_0%,black_18%,black_82%,transparent_100%),linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)] [mask-composite:intersect] [-webkit-mask-composite:source-in]"
+              />
+            </div>
+          </div>
+          <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-background/20 via-background/70 to-background/95" />
+
+          <div className="container relative text-center px-3 md:px-0">
             <h2 className="text-3xl md:text-4xl leading-snug select-none text-yellow-100">
               {t("closing.heading")}
             </h2>
-            <p className="mt-4 text-neutral-400 text-lg max-w-xl mx-auto md:mx-0">
+            <p className="mt-4 text-neutral-400 text-lg max-w-xl mx-auto">
               {t("closing.subtitle")}
             </p>
-            <div className="mt-8 flex justify-center md:justify-start">
+            <div className="mt-8 flex justify-center">
               <button className="btn-cta min-w-xs justify-center">{t("cta").toUpperCase()}</button>
             </div>
           </div>
-          <div className="hidden md:flex md:col-span-2 items-center justify-center relative">
-            <div className="pointer-events-none absolute w-56 h-56 rounded-full bg-yellow-300/20 blur-3xl" />
-            <span className="relative text-8xl select-none">💅</span>
-          </div>
         </div>
-      </div>
+      </FadeInSection>
     </div>
   );
 }

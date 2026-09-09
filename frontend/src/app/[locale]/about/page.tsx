@@ -35,6 +35,7 @@ import FadeInSection from "@/components/ui/FadeInSection";
 import SalonGallery from "@/components/ui/SalonGallery";
 
 import masterImage from "@/../public/images/about/master.webp";
+import closingVideoPoster from "@/../public/images/about/closing-video-poster.webp";
 import autoclaveImage from "@/../public/images/about/autoclave.webp";
 import safetyImage from "@/../public/images/about/why-us/safety.webp";
 import materialsImage from "@/../public/images/about/why-us/materials.webp";
@@ -375,25 +376,56 @@ export default async function About({ params }: Props) {
         </div>
       </FadeInSection>
 
-      <div className="flex justify-center px-3 md:px-0 mt-16 md:mt-24 pb-20">
-        <div className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/60 grid grid-cols-1 md:grid-cols-5">
-          <div className="md:col-span-3 py-14 px-6 md:py-16 md:px-12 text-center md:text-left">
+      <div className="flex justify-center my-10 lg:my-24 px-3 md:px-0">
+        <div className="flex items-center gap-4 w-full max-w-xs">
+          <span className="h-[2px] flex-1 bg-linear-to-r from-transparent to-yellow-200/70" />
+          <span className="w-2.5 h-2.5 rotate-45 border border-yellow-200/70 bg-yellow-200/20 shrink-0" />
+          <span className="h-[2px] flex-1 bg-linear-to-l from-transparent to-yellow-200/70" />
+        </div>
+      </div>
+
+      <FadeInSection>
+        <div className="relative overflow-hidden flex justify-center py-24 md:py-36">
+          <div className="absolute inset-0 flex justify-center">
+            <div className="relative container">
+              <video
+                aria-hidden
+                autoPlay
+                muted
+                loop
+                playsInline
+                disablePictureInPicture
+                disableRemotePlayback
+                poster="/images/about/closing-video-poster.webp"
+                className="motion-reduce:hidden absolute inset-0 w-full h-full object-cover opacity-30 [mask-image:linear-gradient(to_right,transparent_0%,black_18%,black_82%,transparent_100%),linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)] [mask-composite:intersect] [-webkit-mask-composite:source-in]"
+              >
+                <source src="/videos/about/closing-loop.mp4" type="video/mp4" />
+              </video>
+              <Image
+                aria-hidden
+                src={closingVideoPoster}
+                alt=""
+                fill
+                sizes="(max-width: 1536px) 100vw, 1536px"
+                className="hidden motion-reduce:block object-cover opacity-30 [mask-image:linear-gradient(to_right,transparent_0%,black_18%,black_82%,transparent_100%),linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)] [mask-composite:intersect] [-webkit-mask-composite:source-in]"
+              />
+            </div>
+          </div>
+          <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-background/20 via-background/70 to-background/95" />
+
+          <div className="container relative text-center px-3 md:px-0">
             <h2 className="text-3xl md:text-4xl leading-snug select-none text-yellow-100">
               {t("closing.heading")}
             </h2>
-            <p className="mt-4 text-neutral-400 text-lg max-w-xl mx-auto md:mx-0">
+            <p className="mt-4 text-neutral-400 text-lg max-w-xl mx-auto">
               {t("closing.subtitle")}
             </p>
-            <div className="mt-8 flex justify-center md:justify-start">
+            <div className="mt-8 flex justify-center">
               <button className="btn-cta min-w-xs justify-center">{t("cta").toUpperCase()}</button>
             </div>
           </div>
-          <div className="hidden md:flex md:col-span-2 items-center justify-center relative">
-            <div className="pointer-events-none absolute w-56 h-56 rounded-full bg-yellow-300/20 blur-3xl" />
-            <span className="relative text-8xl select-none">✨</span>
-          </div>
         </div>
-      </div>
+      </FadeInSection>
     </div>
   );
 }
