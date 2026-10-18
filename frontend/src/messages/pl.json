@@ -6,7 +6,7 @@
   "nav": {
     "about": "O salonie",
     "prices": "Cennik",
-    "courses": "Kursy",
+    "courses": "Szkolenia",
     "book": "Zapisz się",
     "openMenu": "Otwórz menu",
     "closeMenu": "Zamknij menu"
@@ -187,5 +187,182 @@
         ]
       }
     ]
+  },
+  "courses": {
+    "seo": {
+      "title": "Ro.Manic | Szkolenia manicure",
+      "description": "Szkolenia z manicure i pedicure w Gdańsku: kurs podstawowy, podnoszenie kwalifikacji, program zaawansowany. Nauka indywidualna, certyfikat."
+    },
+    "hero": {
+      "headingMain": "Szkolenia",
+      "headingHighlight": "manicure",
+      "subtitle": "Indywidualna nauka jeden na jeden: od pierwszych kroków w zawodzie po podnoszenie kwalifikacji.",
+      "facts": [
+        { "icon": "user", "label": "Tylko indywidualnie" },
+        { "icon": "certificate", "label": "Certyfikat po angielsku" },
+        { "icon": "heart", "label": "Wsparcie na zawsze" }
+      ],
+      "cta": "Bezpłatna konsultacja",
+      "secondary": "Wybierz kurs"
+    },
+    "list": {
+      "heading": "Wybierz",
+      "headingHighlight": "swój kurs",
+      "subtitle": "Wszystkie kursy odbywają się indywidualnie — tylko Ty i instruktorka.",
+      "durationLabel": "Czas trwania",
+      "formatLabel": "Format",
+      "programLabel": "Program kursu",
+      "bonusLabel": "Bonusy",
+      "priceLabel": "Cena",
+      "enroll": "Zapisz się na kurs",
+      "items": [
+        {
+          "id": "basic",
+          "icon": "basic",
+          "level": "Dla początkujących",
+          "title": "Kurs podstawowy",
+          "description": "Start w zawodzie: od budowy paznokcia po pracę z klientkami.",
+          "duration": "3 dni",
+          "format": "Indywidualnie",
+          "price": "2 500 zł",
+          "bonus": "",
+          "note": "",
+          "program": [
+            "Budowa paznokcia i podstawy higieny",
+            "Dezynfekcja i sterylizacja narzędzi",
+            "Materiały i narzędzia stylistki",
+            "Przygotowanie płytki paznokcia",
+            "Manicure frezarkowy / kombinowany",
+            "Malowanie lakierem hybrydowym",
+            "Wyrównywanie płytki paznokcia",
+            "Podstawy przedłużania paznokci",
+            "Naprawa paznokci i uzupełnianie",
+            "Prawidłowe fotografowanie prac i praca z klientkami"
+          ]
+        },
+        {
+          "id": "upgrade",
+          "icon": "upgrade",
+          "level": "Dla pracujących stylistek",
+          "title": "Podnoszenie kwalifikacji",
+          "description": "Dla stylistek, które już pracują, ale chcą podnieść jakość prac, szybkość i poziom obsługi.",
+          "duration": "1 dzień",
+          "format": "Indywidualnie",
+          "price": "1 500 zł",
+          "bonus": "Checklisty i rekomendacje materiałów",
+          "note": "",
+          "program": [
+            "Prawidłowe przygotowanie płytki i czysty manicure",
+            "Wzmacnianie naturalnych paznokci (żel, baza, techniki wyrównywania)",
+            "Przedłużanie paznokci i prawidłowa architektura",
+            "Poprawianie błędów i trudne przypadki",
+            "Szybkość pracy bez utraty jakości",
+            "Sanepid i prawidłowa organizacja stanowiska pracy",
+            "Fotografia prac: światło, ujęcia, treści do social mediów",
+            "Biznes dla stylistki: ceny, rezerwacje klientek, promocja",
+            "Sekrety mistrzyni i osobiste life-hacki z praktyki"
+          ]
+        },
+        {
+          "id": "pedicure",
+          "icon": "pedicure",
+          "level": "Podnoszenie kwalifikacji",
+          "title": "Kurs pedicure",
+          "description": "Dla stylistek, które pracują od 6 miesięcy.",
+          "duration": "1 dzień",
+          "format": "Indywidualnie",
+          "price": "1 100 zł",
+          "bonus": "",
+          "note": "",
+          "program": [
+            "Budowa paznokcia i skóry stopy, zasady higieny",
+            "Dezynfekcja i sterylizacja narzędzi (Sanepid)",
+            "Przygotowanie stopy i technika pedicure frezarkowego / kombinowanego",
+            "Malowanie lakierem hybrydowym i wzmacnianie paznokci u stóp",
+            "Praca z klientką i prawidłowe fotografowanie prac"
+          ]
+        },
+        {
+          "id": "advanced",
+          "icon": "advanced",
+          "level": "Zaawansowany",
+          "title": "Kurs zaawansowany",
+          "description": "Pełny program z dużą ilością praktyki — dla tych, które chcą opanować zawód w całości.",
+          "duration": "2 miesiące",
+          "format": "Indywidualnie, 1–2 zajęcia w tygodniu w uzgodnionych terminach",
+          "price": "7 500 zł",
+          "bonus": "",
+          "note": "5 dni nauki + 5 dni praktyki",
+          "program": [
+            "Kurs podstawowy",
+            "Przedłużanie paznokci",
+            "Kurs pedicure"
+          ]
+        }
+      ]
+    },
+    "results": {
+      "heading": "Co",
+      "headingHighlight": "otrzymasz",
+      "subtitle": "Po ukończeniu kursu podstawowego i podnoszenia kwalifikacji:",
+      "items": [
+        { "icon": "book", "title": "Skrypt Nail Bible", "description": "„Biblia manicure”: wszystko, co musi wiedzieć stylistka." },
+        { "icon": "certificate", "title": "Certyfikat w języku angielskim", "description": "Potwierdza ukończenie kursu." },
+        { "icon": "gift", "title": "Prezent", "description": "Miła pamiątka po nauce." },
+        { "icon": "lunch", "title": "Obiady w cenie", "description": "Wliczone w cenę kursu." },
+        { "icon": "support", "title": "Moje wsparcie na zawsze", "description": "Zostaję w kontakcie i pomagam radą po zakończeniu nauki." }
+      ]
+    },
+    "graduates": {
+      "heading": "Nasze",
+      "headingHighlight": "absolwentki",
+      "subtitle": "Uczennice z certyfikatami po szkoleniu w studiu."
+    },
+    "start": {
+      "heading": "Od czego",
+      "headingHighlight": "zacząć",
+      "subtitle": "Nie wiesz, czy ten zawód jest dla Ciebie? Zacznij od bezpłatnej konsultacji lub lekcji próbnej.",
+      "consultation": {
+        "badge": "Bezpłatnie",
+        "title": "Wstępna konsultacja o zawodzie",
+        "items": [
+          "Masz obawy — dlaczego właśnie manicure?",
+          "Omówimy Twój przypadek: doświadczenie, sytuację i jaki budżet masz na start",
+          "Podpowiem, jakie kursy są potrzebne na początek",
+          "Wsparcie psychiczne"
+        ],
+        "cta": "Umów konsultację"
+      },
+      "trial": {
+        "badge": "150 zł · 1 godzina",
+        "title": "Lekcja próbna",
+        "intro": "Zajęcia zapoznawcze, na których zrozumiesz, czy zawód stylistki paznokci i forma nauki są dla Ciebie. Podczas lekcji:",
+        "items": [
+          "poznasz instruktorkę i studio",
+          "dowiesz się, jak wygląda nauka",
+          "zobaczysz narzędzia i materiały stylistki",
+          "poznasz podstawową teorię o budowie paznokcia i higienie",
+          "wykonasz w praktyce kilka prostych etapów manicure"
+        ],
+        "outro": "Po zajęciach możesz zadać wszystkie pytania i podjąć decyzję o dalszej nauce.",
+        "cta": "Zapisz się na lekcję"
+      }
+    },
+    "faq": {
+      "heading": "Częste",
+      "headingHighlight": "pytania",
+      "items": [
+        { "question": "Czy kursy są grupowe, czy indywidualne?", "answer": "Wszystkie kursy odbywają się indywidualnie — jeden na jeden z instruktorką." },
+        { "question": "Czy potrzebuję doświadczenia, żeby się zapisać?", "answer": "Kurs podstawowy zaczyna się od podstaw — doświadczenie nie jest potrzebne. Podnoszenie kwalifikacji jest dla stylistek, które już pracują, a kurs pedicure — dla tych, które pracują od 6 miesięcy." },
+        { "question": "Co otrzymam po zakończeniu?", "answer": "Na kursie podstawowym i podnoszeniu kwalifikacji — skrypt z manicure, prezent i certyfikat w języku angielskim. Obiady są wliczone w cenę, a moje wsparcie zostaje z Tobą na zawsze." },
+        { "question": "Nie jestem pewna, czy ten zawód jest dla mnie. Od czego zacząć?", "answer": "Umów się na bezpłatną konsultację wstępną lub lekcję próbną za 150 zł — wykonasz na niej kilka prostych etapów manicure i zdecydujesz, czy kontynuować naukę." },
+        { "question": "Który kurs wybrać?", "answer": "Jeśli dopiero zaczynasz — kurs podstawowy. Jeśli już pracujesz i chcesz się rozwijać — podnoszenie kwalifikacji. Chcesz przejść wszystko za jednym razem — kurs zaawansowany: obejmuje kurs podstawowy, przedłużanie paznokci i pedicure. Nie możesz się zdecydować — napisz, podpowiem." }
+      ]
+    },
+    "closing": {
+      "heading": "Gotowa na pierwszy krok?",
+      "subtitle": "Umów się na bezpłatną konsultację — podpowiem, od którego kursu najlepiej zacząć."
+    },
+    "cta": "Zapisz się"
   }
 }

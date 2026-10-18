@@ -20,8 +20,8 @@ export default function Header() {
         setOpen(false);
     }, [pathname]);
 
-    const liClass = "py-2 xl:py-0 inline-flex items-center cursor-pointer relative after:bg-yellow-200 after:absolute " +
-                    "after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300";
+    const liClass = "py-2 xl:py-0 inline-flex items-center cursor-pointer relative after:bg-yellow-200/70 after:absolute " +
+                    "after:h-0.5 after:w-0 after:-bottom-1 after:left-1/2 after:-translate-x-1/2 hover:after:w-full after:transition-all after:duration-300";
 
     return (
         <header
@@ -57,7 +57,7 @@ export default function Header() {
                                     <Link href="/prices">{t("prices")}</Link>
                                 </li>
                                 <li className={liClass}>
-                                    {t("courses")}
+                                    <Link href="/courses">{t("courses")}</Link>
                                 </li>
                             </ul>
                             <div className="mt-auto xl:mt-0 w-full xl:w-auto flex flex-col items-center gap-24 xl:flex-row xl:gap-10 pb-10 xl:pb-0">
