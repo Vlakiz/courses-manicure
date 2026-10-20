@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 import PhotoLightbox from "@/components/ui/PhotoLightbox";
 
@@ -24,11 +25,12 @@ export default function WorksShowcase({ images, label }: Props) {
           className={`${tileClass} col-span-2 row-span-2 aspect-[4/3] sm:aspect-auto`}
           aria-label={`${label} 1`}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={images[0]}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            sizes="(max-width: 640px) 100vw, 50vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </button>
         {images.slice(1).map((src, i) => (
@@ -39,11 +41,12 @@ export default function WorksShowcase({ images, label }: Props) {
             className={`${tileClass} aspect-square`}
             aria-label={`${label} ${i + 2}`}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={src}
               alt=""
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              fill
+              sizes="(max-width: 640px) 50vw, 25vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </button>
         ))}

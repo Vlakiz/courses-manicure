@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faImages } from "@fortawesome/free-solid-svg-icons";
@@ -61,11 +62,12 @@ export default function PriceList({ categories }: Props) {
                             className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl overflow-hidden ring-1 ring-yellow-200/20 hover:ring-yellow-200/70 transition cursor-zoom-in"
                             aria-label={item.name}
                           >
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
+                            <Image
                               src={item.photos[0]}
                               alt=""
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              fill
+                              sizes="(min-width: 640px) 80px, 64px"
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
                             />
                             {item.photos.length > 1 && (
                               <span className="absolute bottom-1 right-1 flex items-center gap-1 bg-black/60 backdrop-blur-sm text-white text-[10px] px-1.5 py-0.5 rounded-full">

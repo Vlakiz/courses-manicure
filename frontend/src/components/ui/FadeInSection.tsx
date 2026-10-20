@@ -10,14 +10,20 @@ export default function FadeInSection({ children }: Props) {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+
         const observer = new IntersectionObserver(
-        entries => {
-            if (entries[0].isIntersecting) setVisible(true);
-        },
-        { threshold: 0.1 }
+            entries => {
+                if (entries[0].isIntersecting) {
+                    setVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.1 }
         );
 
-        if (ref.current) observer.observe(ref.current);
+        observer.observe(el);
 
         return () => observer.disconnect();
     }, []);
@@ -25,11 +31,14 @@ export default function FadeInSection({ children }: Props) {
     return (
         <div
             ref={ref}
+            // `transform: none` once revealed (instead of translateY(0)) so finished
+            // sections don't keep a permanent compositor layer / containing block.
             style={{
                 opacity: visible ? 1 : 0,
-                transform: visible ? "translateY(0)" : "translateY(20px)",
-                transition: "all 0.6s ease-out",
+                transform: visible ? "none" : "translateY(20px)",
+                transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
             }}
+            className="motion-reduce:opacity-100! motion-reduce:transform-none! motion-reduce:transition-none!"
         >
             {children}
         </div>

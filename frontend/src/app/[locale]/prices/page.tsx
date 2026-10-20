@@ -12,6 +12,7 @@ import { servicePhotos } from "@/data/servicePhotos";
 
 import PriceList, { type PriceCategory } from "@/components/ui/PriceList";
 import FadeInSection from "@/components/ui/FadeInSection";
+import LazyBackgroundVideo from "@/components/ui/LazyBackgroundVideo";
 
 import closingVideoPoster from "@/../public/images/prices/closing-video-poster.webp";
 
@@ -91,19 +92,11 @@ export default async function Prices({ params }: Props) {
         <div className="relative overflow-hidden flex justify-center py-24 md:py-36">
           <div className="absolute inset-0 flex justify-center">
             <div className="relative container">
-              <video
-                aria-hidden
-                autoPlay
-                muted
-                loop
-                playsInline
-                disablePictureInPicture
-                disableRemotePlayback
+              <LazyBackgroundVideo
+                src="/videos/prices/closing-loop.mp4"
                 poster="/images/prices/closing-video-poster.webp"
                 className="motion-reduce:hidden absolute inset-0 w-full h-full object-cover opacity-30 [mask-image:linear-gradient(to_right,transparent_0%,black_18%,black_82%,transparent_100%),linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)] [mask-composite:intersect] [-webkit-mask-composite:source-in]"
-              >
-                <source src="/videos/prices/closing-loop.mp4" type="video/mp4" />
-              </video>
+              />
               <Image
                 aria-hidden
                 src={closingVideoPoster}

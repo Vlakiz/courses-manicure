@@ -14,6 +14,7 @@ import aboutImage from "@/../public/images/home/about.webp";
 import closingVideoPoster from "@/../public/images/home/closing-video-poster.webp";
 
 import FadeInSection from "@/components/ui/FadeInSection";
+import LazyBackgroundVideo from "@/components/ui/LazyBackgroundVideo";
 import ReviewSlider from "@/components/ui/ReviewSlider";
 import Marquee from "@/components/ui/Marquee";
 import WorksShowcase from "@/components/ui/WorksShowcase";
@@ -59,6 +60,7 @@ export default async function Home({ params }: Props) {
               src={heroImage}
               alt="Main image"
               width={600}
+              sizes="(max-width: 1024px) 100vw, 33vw"
               className="rounded-[2rem] w-full shadow-[0_25px_60px_-20px_rgba(0,0,0,0.65)] ring-1 ring-yellow-100/15"
               priority
             />
@@ -80,7 +82,6 @@ export default async function Home({ params }: Props) {
                 alt="About me image"
                 width={600}
                 className="rounded-[2rem] w-full shadow-[0_25px_60px_-20px_rgba(0,0,0,0.65)] ring-1 ring-yellow-100/15"
-                priority
               />
             </div>
             <div className="col-span-2 flex flex-col pl-3 mt-10 xl:mt-25 order-0 lg:order-1">
@@ -156,19 +157,11 @@ export default async function Home({ params }: Props) {
         <div className="relative overflow-hidden flex justify-center py-24 md:py-36">
           <div className="absolute inset-0 flex justify-center">
             <div className="relative container">
-              <video
-                aria-hidden
-                autoPlay
-                muted
-                loop
-                playsInline
-                disablePictureInPicture
-                disableRemotePlayback
+              <LazyBackgroundVideo
+                src="/videos/home/closing-loop.mp4"
                 poster="/images/home/closing-video-poster.webp"
                 className="motion-reduce:hidden absolute inset-0 w-full h-full object-cover opacity-30 [mask-image:linear-gradient(to_right,transparent_0%,black_18%,black_82%,transparent_100%),linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)] [mask-composite:intersect] [-webkit-mask-composite:source-in]"
-              >
-                <source src="/videos/home/closing-loop.mp4" type="video/mp4" />
-              </video>
+              />
               <Image
                 aria-hidden
                 src={closingVideoPoster}

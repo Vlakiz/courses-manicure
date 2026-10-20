@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 
 import "../globals.css";
 import "@/lib/fontawesome";
@@ -53,10 +53,17 @@ export default async function RootLayout({ children, params }: Props) {
 
   setRequestLocale(locale);
 
+  const messages = await getMessages();
+
   return (
     <html lang={htmlLang[locale]}>
       <body className='antialiased'>
-        <NextIntlClientProvider>
+        {/* Only the namespaces read by client components (Header, ReviewSlider) are shipped to the
+            browser; passing everything would inline the whole locale JSON into every page. Add a
+            namespace here when a new client component calls useTranslations() on it. */}
+        <NextIntlClientProvider
+          messages={{ nav: messages.nav, home: { reviews: messages.home.reviews } }}
+        >
           <Header />
           <div className="mt-25">
             <main className="min-h-screen">

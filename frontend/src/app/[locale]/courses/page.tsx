@@ -23,6 +23,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import FadeInSection from "@/components/ui/FadeInSection";
+import LazyBackgroundVideo from "@/components/ui/LazyBackgroundVideo";
 import CourseTabs, { type Course } from "@/components/ui/CourseTabs";
 
 import heroImage from "@/../public/images/courses/learning-process-1.webp";
@@ -351,19 +352,11 @@ export default async function Courses({ params }: Props) {
         <div className="relative overflow-hidden flex justify-center py-24 md:py-36">
           <div className="absolute inset-0 flex justify-center">
             <div className="relative container">
-              <video
-                aria-hidden
-                autoPlay
-                muted
-                loop
-                playsInline
-                disablePictureInPicture
-                disableRemotePlayback
+              <LazyBackgroundVideo
+                src="/videos/courses/closing-loop.mp4"
                 poster="/images/courses/closing-video-poster.webp"
                 className={clsx("motion-reduce:hidden absolute inset-0 w-full h-full object-cover opacity-30", MASK_EDGES)}
-              >
-                <source src="/videos/courses/closing-loop.mp4" type="video/mp4" />
-              </video>
+              />
               <Image
                 aria-hidden
                 src={closingVideoPoster}
